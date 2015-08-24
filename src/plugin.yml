@@ -1,5 +1,18 @@
 name: FunEffects
-version: 1.0.0
+version: 1.0.2
 author: heyimblake
 main: me.heyimblake.FunEffects.Main
 website: http://funeffects.heyimblake.me
+database: false
+commands:
+  giveenderpurr:
+    description: Gives 16 EnderPurrs.
+    usage: /<command> (player)
+    permission: funeffects.giveender
+    permission-message: Insufficient Permissions.
+permissions:
+   funeffects.*:
+     description: Gives access to all FunEffects commands
+     children:
+       funeffects.giveender: true
+     default: op

@@ -31,7 +31,7 @@ public class Events implements Listener {
         Player p = e.getPlayer();
         ItemStack enderPearl = new ItemStack(Material.ENDER_PEARL , 64);
         ItemMeta enderMeta = enderPearl.getItemMeta();
-        enderMeta.setDisplayName(ChatColor.AQUA + "Ender" + ChatColor.YELLOW + ChatColor.BOLD + "Purrs" + ChatColor.RESET + ChatColor.GRAY + " (Right Click)");
+        enderMeta.setDisplayName(ChatColor.AQUA + "Ender" + ChatColor.YELLOW + ChatColor.BOLD + "Purr" + ChatColor.RESET + ChatColor.GRAY + " (Right Click)");
         enderMeta.setLore(Arrays.asList(ChatColor.DARK_AQUA + "Aim and throw this special EnderPearl for a fun surprise!"));
         enderPearl.setItemMeta(enderMeta);
         p.getInventory().setItem(0, enderPearl);
@@ -71,7 +71,7 @@ public class Events implements Listener {
                     e.setCancelled(true);
                     sheep.setHealth(8);
                     sheep.setColor(DyeColor.values()[(new Random()).nextInt(DyeColor.values().length)]);
-                    sheep.getWorld().playEffect(sheeploc.add(0, 2, 0), Effect.COLOURED_DUST, 3);
+                    sheep.getWorld().playEffect(sheeploc.add(0, 0, 0), Effect.SMOKE, 3);
                     sheep.setVelocity(new Vector(0, 2.5, 0));
                     ActionBar.send(damager, ChatColor.YELLOW + "" + ChatColor.BOLD + "Baaaaaahh! " + ChatColor.RESET + ChatColor.AQUA + "You launched a sheep!");
                     damager.getWorld().playSound(damager.getLocation(), Sound.ITEM_PICKUP, 10, 1);

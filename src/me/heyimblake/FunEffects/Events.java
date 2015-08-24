@@ -43,12 +43,13 @@ public class Events implements Listener {
             Location loc = e.getEntity().getLocation();
             Player p = (Player) e.getEntity().getShooter();
             EnderPearl pearl = (EnderPearl) e.getEntity();
+            World world = pearl.getWorld();
 
             pearl.getWorld().playEffect(loc.add(0,1,0), Effect.HEART, 5);
             pearl.getWorld().playEffect(loc.add(0,0,0), Effect.MOBSPAWNER_FLAMES, 5);
             pearl.getWorld().playEffect(loc.add(0,0,0), Effect.FIREWORKS_SPARK, 5);
             pearl.getWorld().playEffect(loc.add(0,1,0), Effect.MAGIC_CRIT, 5);
-            p.getWorld().playSound(p.getLocation(), Sound.CAT_MEOW, 5,1);
+            world.playSound(pearl.getLocation(), Sound.CAT_MEOW, 1,1);
         }
     }
 

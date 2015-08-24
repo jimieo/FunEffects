@@ -10,7 +10,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.Arrays;
 
 import static me.heyimblake.FunEffects.APIs.Strings.*;
 
@@ -20,18 +19,18 @@ import static me.heyimblake.FunEffects.APIs.Strings.*;
 public class giveEnderPurrCMD implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
         if (cmd.getName().equalsIgnoreCase("giveenderpurr")) {
-            ItemStack enderPearl = new ItemStack(Material.ENDER_PEARL , 16);
-            ItemMeta enderMeta = enderPearl.getItemMeta();
-            enderMeta.setDisplayName(ChatColor.AQUA + "Ender" + ChatColor.YELLOW + ChatColor.BOLD + "Purr" + ChatColor.RESET + ChatColor.GRAY + " (Right Click)");
-            enderMeta.setLore(Arrays.asList(ChatColor.DARK_AQUA + "Aim and throw this special EnderPearl for a fun surprise!"));
-            enderPearl.setItemMeta(enderMeta);
+            ItemStack enderPurr = new ItemStack(Material.ENDER_PEARL , 16);
+            ItemMeta enderMeta = enderPurr.getItemMeta();
+            enderMeta.setDisplayName(EnderPurrName);
+            enderMeta.setLore(EnderPurrLore);
+            enderPurr.setItemMeta(enderMeta);
             if (!(sender instanceof Player)) {
                 sender.sendMessage(TAG+"You must be a player to use this command.");
                 return false;
             }
             else if (args.length == 0){
                 Player p = (Player) sender;
-                p.getInventory().setItem(0, enderPearl);
+                p.getInventory().setItem(0, enderPurr);
                 p.sendMessage(TAG+"You have recieved 16 EnderPurrs.");
                 return true;
             }
@@ -42,7 +41,7 @@ public class giveEnderPurrCMD implements CommandExecutor {
                     p.sendMessage(TAG+ ChatColor.DARK_RED + "Couldn't find " + args[0] +" . Are they online?");
                     return true;
                 } else {
-                    target.getInventory().setItem(0, enderPearl);
+                    target.getInventory().setItem(0, enderPurr);
                     target.sendMessage(TAG + "You have recieved 16 EnderPurrs.");
                     p.sendMessage(TAG+"You have sent 16 EnderPurrs to "+args[0]);
                     return true;

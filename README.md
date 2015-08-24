@@ -6,7 +6,7 @@ Hub-Styled Fun Effects, Tools, Items, etc! Made for 1.8 Spigot/Bukkit.
 
 Command | Permission
 ------------ | -------------
-/giveenderpurr (player) | funeffects.giveenderpurr (As of 1.0.2)
+/giveenderpurr (player) | funeffects.giveender (As of 1.0.2)
 
 ### Looking for a download link?
 Latest Release: http://dl.funeffects.heyimblake.me

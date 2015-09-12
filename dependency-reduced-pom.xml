@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>me.heyimblake</groupId>
   <artifactId>FunEffects</artifactId>
-  <version>1.1.0</version>
+  <version>1.1.1</version>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <resources>
@@ -48,10 +48,6 @@
     <repository>
       <id>spigot-repo</id>
       <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
-    </repository>
-    <repository>
-      <id>citizens-repo</id>
-      <url>http://repo.citizensnpcs.co/</url>
     </repository>
   </repositories>
   <dependencies>

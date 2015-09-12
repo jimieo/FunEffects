@@ -1,5 +1,5 @@
 name: FunEffects
-version: 1.0.2
+version: 1.1.0
 author: heyimblake
 main: me.heyimblake.FunEffects.Main
 website: http://funeffects.heyimblake.me
@@ -10,9 +10,15 @@ commands:
     usage: /<command> (player)
     permission: funeffects.giveender
     permission-message: Insufficient Permissions.
+  givefireball:
+    description: Gives 16 FireBalls.
+    usage: /<command> (player)
+    permission: funeffects.givefireball
+    permission-message: Insufficient Permissions.
 permissions:
    funeffects.*:
      description: Gives access to all FunEffects commands
      children:
        funeffects.giveender: true
+       funeffects.givefireball: true
      default: op

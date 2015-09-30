@@ -7,6 +7,8 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import static me.heyimblake.FunEffects.APIs.Strings.*;
+
 /**
  * Created by heyimblake on 8/23/2015.
  */

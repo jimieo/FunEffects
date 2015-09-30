@@ -1,21 +1,28 @@
 package me.heyimblake.FunEffects;
 
 import org.bukkit.*;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
+import org.bukkit.event.vehicle.VehicleExitEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.util.Vector;
 
 import io.github.theluca98.textapi.*;
+import org.spigotmc.event.entity.EntityDismountEvent;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -26,17 +33,45 @@ import static me.heyimblake.FunEffects.APIs.Strings.*;
  * Created by heyimblake on 8/23/2015.
  */
 public class Events implements Listener {
+
+    @EventHandler
+    public void onChairClick(PlayerInteractEvent e){
+        final Player p = e.getPlayer();
+        if (e.getAction() == Action.RIGHT_CLICK_BLOCK){
+            if (e.getClickedBlock().getType() == Material.ACACIA_STAIRS || e.getClickedBlock().getType() == Material.QUARTZ_STAIRS || e.getClickedBlock().getType() == Material.BIRCH_WOOD_STAIRS || e.getClickedBlock().getType() == Material.BRICK_STAIRS || e.getClickedBlock().getType() == Material.COBBLESTONE_STAIRS || e.getClickedBlock().getType() == Material.DARK_OAK_STAIRS || e.getClickedBlock().getType() == Material.JUNGLE_WOOD_STAIRS || e.getClickedBlock().getType() == Material.NETHER_BRICK_STAIRS || e.getClickedBlock().getType() == Material.RED_SANDSTONE_STAIRS || e.getClickedBlock().getType() == Material.SANDSTONE_STAIRS || e.getClickedBlock().getType() == Material.SMOOTH_STAIRS || e.getClickedBlock().getType() == Material.QUARTZ_STAIRS || e.getClickedBlock().getType() == Material.SPRUCE_WOOD_STAIRS || e.getClickedBlock().getType() == Material.WOOD_STAIRS) {
+                Block block = e.getClickedBlock();
+                if (e.getBlockFace() == BlockFace.UP) {
+                    Location stair = block.getLocation().add(.5, 0, .5);
+                    World world = block.getWorld();
+
+                    p.teleport(stair);
+                    final Arrow arrow = world.spawnArrow(stair, new Vector(0, -1, 0), 6 / 10, 12);
+                    arrow.setPassenger(p);
+
+                    BukkitScheduler scheduler9 = Bukkit.getServer().getScheduler();
+                    scheduler9.scheduleSyncDelayedTask(me.heyimblake.FunEffects.Main.getPlugin(), new Runnable() {
+                        @Override
+                        public void run() {
+                            arrow.remove();
+                            p.eject();
+                        }
+                    }, 200);
+                }
+            }
+        }
+    }
+
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        ItemStack enderPurr = new ItemStack(Material.ENDER_PEARL, 64);
+        ItemStack enderPurr = new ItemStack(Material.ENDER_PEARL, 16);
         ItemMeta enderMeta = enderPurr.getItemMeta();
         enderMeta.setDisplayName(EnderPurrName);
         enderMeta.setLore(EnderPurrLore);
         enderPurr.setItemMeta(enderMeta);
         p.getInventory().addItem(enderPurr);
 
-        ItemStack sb = new ItemStack(Material.SNOW_BALL, 64);
+        ItemStack sb = new ItemStack(Material.SNOW_BALL, 16);
         ItemMeta sbmeta = sb.getItemMeta();
         sbmeta.setDisplayName(FireBallName);
         sbmeta.setLore(FireBallLore);

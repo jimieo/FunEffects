@@ -25,8 +25,6 @@ public class Main extends JavaPlugin {
     @Override
     public void onDisable(){
         plugin = null;
-        SeatHashMap.clear();
-        SeatList.clear();
     }
     public static Plugin getPlugin() {
         return plugin;

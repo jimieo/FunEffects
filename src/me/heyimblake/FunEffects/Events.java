@@ -45,41 +45,18 @@ public class Events implements Listener {
                     p.teleport(stair);
                     final Arrow arrow = world.spawnArrow(stair, new Vector(0, -1, 0), 6/10, 12);
                     arrow.setPassenger(p);
-                    SeatList.add(p.getUniqueId());
-                    SeatHashMap.put(p.getUniqueId(),arrow);
+                    BukkitScheduler removearrow = Bukkit.getServer().getScheduler();
+                    removearrow.scheduleSyncDelayedTask(me.heyimblake.FunEffects.Main.getPlugin(), new Runnable() {
+                        @Override
+                        public void run() {
+                            arrow.remove();
+                        }
+                    }, 600);
                 }
             }
         }
     }
 
-    @EventHandler
-    public void onPlayerLeave(PlayerQuitEvent e){
-        Player p = e.getPlayer();
-        if (SeatList.contains(p.getUniqueId())){
-            Arrow arrow = SeatHashMap.get(p.getUniqueId());
-            arrow.eject();
-            arrow.remove();
-            p.teleport(p.getLocation().add(0,1,0));
-            SeatList.remove(p.getUniqueId());
-            SeatHashMap.remove(p.getUniqueId());
-        }
-    }
-
-    @EventHandler
-    public void onPlayerDismount(VehicleExitEvent e){
-        if (e.getExited() instanceof Player){
-            Player p = ((Player) e.getExited());
-            if (SeatList.contains(p.getUniqueId())){
-                e.setCancelled(true);
-                Arrow arrpw = SeatHashMap.get(p.getUniqueId());
-                arrpw.eject();
-                arrpw.remove();
-                p.teleport(p.getLocation().add(0,1,0));
-                SeatList.remove(p.getUniqueId());
-                SeatHashMap.remove(p.getUniqueId());
-            }
-        }
-    }
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {

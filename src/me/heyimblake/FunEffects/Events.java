@@ -12,6 +12,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.vehicle.VehicleExitEvent;
 import org.bukkit.inventory.ItemStack;
@@ -22,9 +23,7 @@ import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.util.Vector;
 
 import io.github.theluca98.textapi.*;
-import org.spigotmc.event.entity.EntityDismountEvent;
 
-import java.util.Arrays;
 import java.util.Random;
 
 import static me.heyimblake.FunEffects.APIs.Strings.*;
@@ -43,20 +42,41 @@ public class Events implements Listener {
                 if (e.getBlockFace() == BlockFace.UP) {
                     Location stair = block.getLocation().add(.5, 0, .5);
                     World world = block.getWorld();
-
                     p.teleport(stair);
-                    final Arrow arrow = world.spawnArrow(stair, new Vector(0, -1, 0), 6 / 10, 12);
+                    final Arrow arrow = world.spawnArrow(stair, new Vector(0, -1, 0), 6/10, 12);
                     arrow.setPassenger(p);
-
-                    BukkitScheduler scheduler9 = Bukkit.getServer().getScheduler();
-                    scheduler9.scheduleSyncDelayedTask(me.heyimblake.FunEffects.Main.getPlugin(), new Runnable() {
-                        @Override
-                        public void run() {
-                            arrow.remove();
-                            p.eject();
-                        }
-                    }, 200);
+                    SeatList.add(p.getUniqueId());
+                    SeatHashMap.put(p.getUniqueId(),arrow);
                 }
+            }
+        }
+    }
+
+    @EventHandler
+    public void onPlayerLeave(PlayerQuitEvent e){
+        Player p = e.getPlayer();
+        if (SeatList.contains(p.getUniqueId())){
+            Arrow arrow = SeatHashMap.get(p.getUniqueId());
+            arrow.eject();
+            arrow.remove();
+            p.teleport(p.getLocation().add(0,1,0));
+            SeatList.remove(p.getUniqueId());
+            SeatHashMap.remove(p.getUniqueId());
+        }
+    }
+
+    @EventHandler
+    public void onPlayerDismount(VehicleExitEvent e){
+        if (e.getExited() instanceof Player){
+            Player p = ((Player) e.getExited());
+            if (SeatList.contains(p.getUniqueId())){
+                e.setCancelled(true);
+                Arrow arrpw = SeatHashMap.get(p.getUniqueId());
+                arrpw.eject();
+                arrpw.remove();
+                p.teleport(p.getLocation().add(0,1,0));
+                SeatList.remove(p.getUniqueId());
+                SeatHashMap.remove(p.getUniqueId());
             }
         }
     }
@@ -69,14 +89,19 @@ public class Events implements Listener {
         enderMeta.setDisplayName(EnderPurrName);
         enderMeta.setLore(EnderPurrLore);
         enderPurr.setItemMeta(enderMeta);
-        p.getInventory().addItem(enderPurr);
 
         ItemStack sb = new ItemStack(Material.SNOW_BALL, 16);
         ItemMeta sbmeta = sb.getItemMeta();
         sbmeta.setDisplayName(FireBallName);
         sbmeta.setLore(FireBallLore);
         sb.setItemMeta(sbmeta);
-        p.getInventory().addItem(sb);
+
+        if (!p.getInventory().contains(enderPurr)){
+            p.getInventory().addItem(enderPurr);
+        }
+        if (!p.getInventory().contains(sb)){
+            p.getInventory().addItem(sb);
+        }
     }
 
     @EventHandler
@@ -97,7 +122,26 @@ public class Events implements Listener {
         else if (e.getEntity() instanceof Snowball) {
             if (e.getEntityType() == EntityType.SNOWBALL) {
                 Location loc = e.getEntity().getLocation();
-                FireworkEffect effect = FireworkEffect.builder().trail(false).flicker(false).withColor(Color.BLUE,Color.WHITE,Color.GRAY).withFade(Color.AQUA).with(FireworkEffect.Type.BALL).build();
+                Random r = new Random();
+                int rc = r.nextInt(6);
+                Color color = Color.WHITE;
+                if (rc == 0) color = Color.AQUA;
+                if (rc == 1) color = Color.ORANGE;
+                if (rc == 2) color = Color.RED;
+                if (rc == 3) color = Color.FUCHSIA;
+                if (rc == 4) color = Color.GREEN;
+                if (rc == 5) color = Color.LIME;
+
+                Random r2 = new Random();
+                int rc2 = r2.nextInt(6);
+                Color color2 = Color.WHITE;
+                if (rc2 == 0) color2 = Color.TEAL;
+                if (rc2 == 1) color2 = Color.BLUE;
+                if (rc2 == 2) color2 = Color.PURPLE;
+                if (rc2 == 3) color2 = Color.BLACK;
+                if (rc2 == 4) color2 = Color.OLIVE;
+                if (rc2 == 5) color2 = Color.NAVY;
+                FireworkEffect effect = FireworkEffect.builder().trail(false).flicker(false).withColor(color).withColor(color2).withFade(Color.GRAY).with(FireworkEffect.Type.BALL).build();
                 final Firework fw = loc.getWorld().spawn(loc.add(0, 1, 0), Firework.class);
                 FireworkMeta meta = fw.getFireworkMeta();
                 meta.addEffect(effect);
@@ -115,7 +159,9 @@ public class Events implements Listener {
 
     @EventHandler
     public void enderpearlTP(PlayerTeleportEvent e) {
-        e.setCancelled(true);
+        if (e.getCause() == PlayerTeleportEvent.TeleportCause.ENDER_PEARL) {
+            e.setCancelled(true);
+        }
     }
 
     @EventHandler
@@ -131,7 +177,6 @@ public class Events implements Listener {
                     sheep.setColor(DyeColor.values()[(new Random()).nextInt(DyeColor.values().length)]);
                     sheep.getWorld().playEffect(sheeploc.add(0, 0, 0), Effect.SMOKE, 3);
                     sheep.setVelocity(new Vector(0, 2.5, 0));
-                    ActionBar.send(damager, ChatColor.YELLOW + "" + ChatColor.BOLD + "Baaaaaahh! " + ChatColor.RESET + ChatColor.AQUA + "You launched a sheep!");
                     damager.getWorld().playSound(damager.getLocation(), Sound.ITEM_PICKUP, 10, 1);
                 }
             }
@@ -141,7 +186,6 @@ public class Events implements Listener {
     @EventHandler
     public void sheepFallDmg(EntityDamageEvent e) {
         if (e.getEntity() instanceof Sheep && e.getCause() == EntityDamageEvent.DamageCause.FALL) {
-            e.setDamage(0);
             e.setCancelled(true);
         }
     }

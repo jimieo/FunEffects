@@ -1,6 +1,8 @@
 package me.heyimblake.FunEffects.APIs;
 
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Arrow;
+import org.bukkit.entity.Player;
 
 import java.util.*;
 
@@ -14,6 +16,9 @@ public class Strings {
 
     public static final String EnderPurrName = ChatColor.AQUA+"Ender"+ChatColor.YELLOW+ChatColor.BOLD+"Purr"+ChatColor.RESET+ChatColor.GRAY+" (Right Click)";
     public static final List EnderPurrLore = Arrays.asList(ChatColor.GRAY + "Meow? MEOW!");
+
+    public static final HashMap<UUID, Arrow> SeatHashMap = new HashMap<>();
+    public static final ArrayList<UUID> SeatList = new ArrayList<>();
 
     public static final String FireBallName = ChatColor.RED+"Fire"+ChatColor.YELLOW+""+ChatColor.BOLD+"Ball"+ChatColor.GRAY+" (Right Click)";
     public static final List FireBallLore = Arrays.asList(ChatColor.GRAY+"*insert firework sound here*");

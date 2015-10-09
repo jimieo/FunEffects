@@ -38,7 +38,7 @@
                 <configuration>
                     <artifactSet>
                         <includes>
-                            <include>io.github.theluca98:TextAPI:*:*</include>
+
                         </includes>
                     </artifactSet>
                 </configuration>
@@ -75,15 +75,6 @@
             <version>1.8.8-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
-
-        <dependency>
-            <groupId>io.github.theluca98</groupId>
-            <artifactId>TextAPI</artifactId>
-            <version>1.8.8-SNAPSHOT</version>
-            <type>jar</type>
-            <scope>compile</scope>
-        </dependency>
-
 
     </dependencies>
 

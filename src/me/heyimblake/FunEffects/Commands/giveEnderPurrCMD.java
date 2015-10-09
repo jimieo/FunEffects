@@ -1,14 +1,13 @@
 package me.heyimblake.FunEffects.Commands;
 
+import me.heyimblake.FunEffects.ItemStacks.EnderPurr;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 
 import static me.heyimblake.FunEffects.APIs.Strings.*;
@@ -19,11 +18,7 @@ import static me.heyimblake.FunEffects.APIs.Strings.*;
 public class giveEnderPurrCMD implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
         if (cmd.getName().equalsIgnoreCase("giveenderpurr")) {
-            ItemStack enderPurr = new ItemStack(Material.ENDER_PEARL , 16);
-            ItemMeta enderMeta = enderPurr.getItemMeta();
-            enderMeta.setDisplayName(EnderPurrName);
-            enderMeta.setLore(EnderPurrLore);
-            enderPurr.setItemMeta(enderMeta);
+           ItemStack enderPurr = EnderPurr.createEnderPurr(16);
             if (!(sender instanceof Player)) {
                 sender.sendMessage(TAG+"You must be a player to use this command.");
                 return false;

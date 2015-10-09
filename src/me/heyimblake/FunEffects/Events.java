@@ -1,5 +1,7 @@
 package me.heyimblake.FunEffects;
 
+import me.heyimblake.FunEffects.ItemStacks.EnderPurr;
+import me.heyimblake.FunEffects.ItemStacks.FireBall;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -12,21 +14,14 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
-import org.bukkit.event.vehicle.VehicleExitEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.util.Vector;
 
-import io.github.theluca98.textapi.*;
-
 import java.util.Random;
-
-import static me.heyimblake.FunEffects.APIs.Strings.*;
 
 /**
  * Created by heyimblake on 8/23/2015.
@@ -61,17 +56,8 @@ public class Events implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        ItemStack enderPurr = new ItemStack(Material.ENDER_PEARL, 16);
-        ItemMeta enderMeta = enderPurr.getItemMeta();
-        enderMeta.setDisplayName(EnderPurrName);
-        enderMeta.setLore(EnderPurrLore);
-        enderPurr.setItemMeta(enderMeta);
-
-        ItemStack sb = new ItemStack(Material.SNOW_BALL, 16);
-        ItemMeta sbmeta = sb.getItemMeta();
-        sbmeta.setDisplayName(FireBallName);
-        sbmeta.setLore(FireBallLore);
-        sb.setItemMeta(sbmeta);
+        ItemStack enderPurr = EnderPurr.createEnderPurr(16);
+        ItemStack sb = FireBall.createFireball(16);
 
         if (!p.getInventory().contains(enderPurr)){
             p.getInventory().addItem(enderPurr);

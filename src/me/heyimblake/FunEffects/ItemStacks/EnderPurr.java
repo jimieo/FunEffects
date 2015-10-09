@@ -8,7 +8,7 @@ import static me.heyimblake.FunEffects.APIs.Strings.EnderPurrLore;
 import static me.heyimblake.FunEffects.APIs.Strings.EnderPurrName;
 
 /**
- * Created by blakekhan on 10/9/15.
+ * Created by heyimblake on 10/9/15.
  */
 public class EnderPurr {
     public static ItemStack createEnderPurr(int amount){

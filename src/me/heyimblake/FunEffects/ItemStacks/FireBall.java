@@ -8,7 +8,7 @@ import static me.heyimblake.FunEffects.APIs.Strings.FireBallLore;
 import static me.heyimblake.FunEffects.APIs.Strings.FireBallName;
 
 /**
- * Created by blakekhan on 10/9/15.
+ * Created by heyimblake on 10/9/15.
  */
 public class FireBall {
     public static ItemStack createFireball(int amount){

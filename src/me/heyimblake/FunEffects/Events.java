@@ -22,13 +22,15 @@ public class Events implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        ItemStack enderPurr = EnderPurr.createEnderPurr();
-        ItemStack sb = FireBall.createFireball();
+        ItemStack enderPurr = EnderPurr.createEnderPurr(16);
+        ItemStack sb = FireBall.createFireball(16);
 
         if (!p.getInventory().contains(enderPurr)){
+            p.getInventory().remove(Material.ENDER_PEARL);
             p.getInventory().addItem(EnderPurr.createEnderPurr(16));
         }
         if (!p.getInventory().contains(sb)){
+            p.getInventory().remove(Material.SNOW_BALL);
             p.getInventory().addItem(FireBall.createFireball(16));
         }
     }

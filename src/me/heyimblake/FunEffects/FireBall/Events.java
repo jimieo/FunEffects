@@ -58,14 +58,14 @@ public class Events implements Listener {
                 if (rs == 2) shape = FireworkEffect.Type.STAR;
                 if (rs == 3) shape = FireworkEffect.Type.CREEPER;
 
-                //Randomly decide if a trail will be added
+                //Randomly decide if a flicker will be added
                 Random r4 = new Random();
-                Boolean trail = null;
-                int rt = r4.nextInt(2)+1;
-                if (rt == 1) trail = true;
-                if (rt == 2) trail = false;
+                Boolean flicker = null;
+                int rf = r4.nextInt(2)+1;
+                if (rf == 1) flicker = true;
+                if (rf == 2) flicker = false;
 
-                FireworkEffect effect = FireworkEffect.builder().trail(trail).flicker(false).withColor(color).withColor(color2).with(shape).build();
+                FireworkEffect effect = FireworkEffect.builder().trail(false).flicker(flicker).withColor(color).withColor(color2).with(shape).build();
                 final Firework fw = loc.getWorld().spawn(loc.add(0, 1, 0), Firework.class);
                 FireworkMeta meta = fw.getFireworkMeta();
                 meta.addEffect(effect);

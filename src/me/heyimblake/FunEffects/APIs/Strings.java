@@ -1,8 +1,6 @@
 package me.heyimblake.FunEffects.APIs;
 
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Arrow;
-import org.bukkit.entity.Player;
 
 import java.util.*;
 
@@ -11,12 +9,15 @@ import java.util.*;
  */
 public class Strings {
     public static char heavyline = '\u2502';
+    public static char heavyarrow = '\u27A4';
+    public static char doublerightarrow ='\u00BB';
 
     public static final String TAG = ChatColor.DARK_GRAY+""+heavyline+ChatColor.AQUA+" FunEffects "+ChatColor.DARK_GRAY+""+heavyline+ChatColor.GRAY+" ";
+    public static final String NONPLAYERERR = ChatColor.DARK_RED+"You must be a player to use this.";
 
-    public static final String EnderPurrName = ChatColor.AQUA+"Ender"+ChatColor.YELLOW+ChatColor.BOLD+"Purr"+ChatColor.RESET+ChatColor.GRAY+" (Right Click)";
-    public static final List EnderPurrLore = Arrays.asList(ChatColor.GRAY + "Meow? MEOW!");
+    public static final String EnderPurrName = ChatColor.AQUA+"Ender"+ChatColor.YELLOW+ChatColor.BOLD+"Purr";
+    public static final List EnderPurrLore = Arrays.asList(ChatColor.GRAY + "Meow? MEOW!"," ",ChatColor.DARK_AQUA+""+heavyarrow+ChatColor.AQUA+" Right Click to use.");
 
-    public static final String FireBallName = ChatColor.RED+"Fire"+ChatColor.YELLOW+""+ChatColor.BOLD+"Ball"+ChatColor.GRAY+" (Right Click)";
-    public static final List FireBallLore = Arrays.asList(ChatColor.GRAY+"*insert firework sound here*");
+    public static final String FireBallName = ChatColor.RED+"Fire"+ChatColor.YELLOW+""+ChatColor.BOLD+"Ball";
+    public static final List FireBallLore = Arrays.asList(ChatColor.GRAY+"Pew pew!"," ",ChatColor.DARK_AQUA+""+heavyarrow+ChatColor.AQUA+" Right Click to use.");
 }

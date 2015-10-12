@@ -9,7 +9,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-
 import static me.heyimblake.FunEffects.APIs.Strings.*;
 
 /**
@@ -20,7 +19,7 @@ public class giveEnderPurrCMD implements CommandExecutor {
         if (cmd.getName().equalsIgnoreCase("giveenderpurr")) {
            ItemStack enderPurr = EnderPurr.createEnderPurr(16);
             if (!(sender instanceof Player)) {
-                sender.sendMessage(TAG+"You must be a player to use this command.");
+                sender.sendMessage(NONPLAYERERR);
                 return false;
             }
             else if (args.length == 0){
@@ -41,6 +40,10 @@ public class giveEnderPurrCMD implements CommandExecutor {
                     p.sendMessage(TAG+"You have sent 16 EnderPurrs to "+args[0]);
                     return true;
                 }
+            }
+            if (args.length >= 2) {
+                p.sendMessage(TAG+ChatColor.DARK_RED+"Usage /giveenderpurr (player)");
+                return true;
             }
         }
     return true;

@@ -19,7 +19,7 @@ public class giveFireBallCMD implements CommandExecutor {
         if (cmd.getName().equalsIgnoreCase("givefireball")) {
             ItemStack sb = FireBall.createFireball(16);
             if (!(sender instanceof Player)) {
-                sender.sendMessage(TAG+"You must be a player to use this command.");
+                sender.sendMessage(NONPLAYERERR);
                 return false;
             }
             else if (args.length == 0){
@@ -40,6 +40,10 @@ public class giveFireBallCMD implements CommandExecutor {
                     p.sendMessage(TAG+"You have sent 16 FireBalls to "+args[0]);
                     return true;
                 }
+            }
+            if (args.length >= 2) {
+                p.sendMessage(TAG+ChatColor.DARK_RED+"Usage /givefireball (player)");
+                return true;
             }
         }
         return true;

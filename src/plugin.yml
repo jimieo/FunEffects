@@ -1,5 +1,5 @@
 name: FunEffects
-version: 1.1.4
+version: 1.1.5
 author: heyimblake
 main: me.heyimblake.FunEffects.Main
 website: http://funeffects.heyimblake.me
@@ -8,13 +8,15 @@ commands:
   giveenderpurr:
     description: Gives 16 EnderPurrs.
     usage: /<command> (player)
+    aliases: gep
     permission: funeffects.giveender
-    permission-message: Insufficient Permissions.
+    permission-message: §4Insufficient Permissions.
   givefireball:
     description: Gives 16 FireBalls.
     usage: /<command> (player)
+    aliases: gfb
     permission: funeffects.givefireball
-    permission-message: Insufficient Permissions.
+    permission-message: §4Insufficient Permissions.
 permissions:
    funeffects.*:
      description: Gives access to all FunEffects commands

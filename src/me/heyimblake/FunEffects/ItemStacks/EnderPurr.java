@@ -19,4 +19,12 @@ public class EnderPurr {
         enderPurr.setItemMeta(enderMeta);
         return enderPurr;
     }
+    public static ItemStack createEnderPurr(){
+        ItemStack enderPurr = new ItemStack(Material.ENDER_PEARL , 1);
+        ItemMeta enderMeta = enderPurr.getItemMeta();
+        enderMeta.setDisplayName(EnderPurrName);
+        enderMeta.setLore(EnderPurrLore);
+        enderPurr.setItemMeta(enderMeta);
+        return enderPurr;
+    }
 }

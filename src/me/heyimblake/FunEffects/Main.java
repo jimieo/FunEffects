@@ -7,8 +7,6 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import static me.heyimblake.FunEffects.APIs.Strings.*;
-
 /**
  * Created by heyimblake on 8/23/2015.
  */
@@ -19,6 +17,9 @@ public class Main extends JavaPlugin {
         plugin = this;
         PluginManager pm = Bukkit.getServer().getPluginManager();
         pm.registerEvents(new Events(), this);
+        pm.registerEvents(new me.heyimblake.FunEffects.EnderPurr.Events(), this);
+        pm.registerEvents(new me.heyimblake.FunEffects.FireBall.Events(), this);
+        pm.registerEvents(new me.heyimblake.FunEffects.Chairs.Events(), this);
         getCommand("giveenderpurr").setExecutor(new giveEnderPurrCMD());
         getCommand("givefireball").setExecutor(new giveFireBallCMD());
     }

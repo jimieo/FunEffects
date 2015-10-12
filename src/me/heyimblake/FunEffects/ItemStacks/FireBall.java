@@ -19,4 +19,12 @@ public class FireBall {
         sb.setItemMeta(sbmeta);
         return sb;
     }
+    public static ItemStack createFireball(){
+        ItemStack sb = new ItemStack(Material.SNOW_BALL, 1);
+        ItemMeta sbmeta = sb.getItemMeta();
+        sbmeta.setDisplayName(FireBallName);
+        sbmeta.setLore(FireBallLore);
+        sb.setItemMeta(sbmeta);
+        return sb;
+    }
 }

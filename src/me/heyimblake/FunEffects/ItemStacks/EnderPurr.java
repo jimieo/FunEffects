@@ -4,8 +4,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import static me.heyimblake.FunEffects.APIs.Strings.EnderPurrLore;
-import static me.heyimblake.FunEffects.APIs.Strings.EnderPurrName;
+import static me.heyimblake.FunEffects.APIs.Strings.*;
 
 /**
  * Created by heyimblake on 10/9/15.
@@ -20,7 +19,7 @@ public class EnderPurr {
         return enderPurr;
     }
     public static ItemStack createEnderPurr(){
-        ItemStack enderPurr = new ItemStack(Material.ENDER_PEARL , 1);
+        ItemStack enderPurr = new ItemStack(Material.ENDER_PEARL , 16);
         ItemMeta enderMeta = enderPurr.getItemMeta();
         enderMeta.setDisplayName(EnderPurrName);
         enderMeta.setLore(EnderPurrLore);

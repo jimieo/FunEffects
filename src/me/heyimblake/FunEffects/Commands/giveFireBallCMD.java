@@ -20,7 +20,11 @@ public class giveFireBallCMD implements CommandExecutor {
             ItemStack sb = FireBall.createFireball(16);
             if (!(sender instanceof Player)) {
                 sender.sendMessage(NONPLAYERERR);
-                return false;
+                return true;
+            }
+            if (!(sender.hasPermission("funeffects.givefireball"))) {
+                sender.sendMessage(NOPERMERR);
+                return true;
             }
             else if (args.length == 0){
                 Player p = (Player) sender;

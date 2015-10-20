@@ -4,8 +4,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import static me.heyimblake.FunEffects.APIs.Strings.FireBallLore;
-import static me.heyimblake.FunEffects.APIs.Strings.FireBallName;
+import static me.heyimblake.FunEffects.APIs.Strings.*;
 
 /**
  * Created by heyimblake on 10/9/15.
@@ -20,7 +19,7 @@ public class FireBall {
         return sb;
     }
     public static ItemStack createFireball(){
-        ItemStack sb = new ItemStack(Material.SNOW_BALL, 1);
+        ItemStack sb = new ItemStack(Material.SNOW_BALL, 16);
         ItemMeta sbmeta = sb.getItemMeta();
         sbmeta.setDisplayName(FireBallName);
         sbmeta.setLore(FireBallLore);

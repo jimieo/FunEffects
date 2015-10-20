@@ -1,11 +1,11 @@
 package me.heyimblake.FunEffects;
 
-import me.heyimblake.FunEffects.Commands.giveEnderPurrCMD;
-import me.heyimblake.FunEffects.Commands.giveFireBallCMD;
+import me.heyimblake.FunEffects.Commands.*;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+
 
 /**
  * Created by heyimblake on 8/23/2015.
@@ -22,6 +22,9 @@ public class Main extends JavaPlugin {
         pm.registerEvents(new me.heyimblake.FunEffects.Chairs.Events(), this);
         getCommand("giveenderpurr").setExecutor(new giveEnderPurrCMD());
         getCommand("givefireball").setExecutor(new giveFireBallCMD());
+        getCommand("toggleautoinv").setExecutor(new toggleAutoInvCMD());
+        getCommand("toggleenderpurr").setExecutor(new toggleEnderPurrCMD());
+        getCommand("togglefireball").setExecutor(new toggleFireBallCMD());
     }
     @Override
     public void onDisable(){

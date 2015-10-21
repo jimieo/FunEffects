@@ -14,6 +14,7 @@ Command/Action | Permission
 /toggleenderpurr | funeffects.toggleenderpurr
 /togglefireball | funeffects.togglefireball
 Ability to use Chairs | funeffects.usechair
+All Permissions | funeffects.*
 
 ### Looking for a download link?
 Latest Release: http://dl.funeffects.heyimblake.me

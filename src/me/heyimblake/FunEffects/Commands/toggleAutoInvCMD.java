@@ -4,7 +4,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import static me.heyimblake.FunEffects.APIs.Strings.*;
+import static me.heyimblake.FunEffects.Utils.Strings.*;
+import static me.heyimblake.FunEffects.Utils.Booleans.*;
 
 /**
  * Created by heyimblake on 10/20/15.

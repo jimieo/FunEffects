@@ -15,7 +15,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
-import me.heyimblake.FunEffects.APIs.Strings.*;
+import static me.heyimblake.FunEffects.Utils.Booleans.*;
+import static me.heyimblake.FunEffects.Utils.Strings.*;
 
 /**
  * Created by heyimblake on 10/12/15.

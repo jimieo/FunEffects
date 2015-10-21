@@ -4,7 +4,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import static me.heyimblake.FunEffects.APIs.Strings.*;
+import static me.heyimblake.FunEffects.Utils.Strings.*;
 
 /**
  * Created by heyimblake on 10/9/15.

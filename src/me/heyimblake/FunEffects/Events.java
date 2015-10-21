@@ -14,7 +14,8 @@ import org.bukkit.util.Vector;
 
 import java.util.Random;
 
-import static me.heyimblake.FunEffects.APIs.Strings.*;
+import static me.heyimblake.FunEffects.Utils.Strings.*;
+import static me.heyimblake.FunEffects.Utils.Booleans.*;
 
 /**
  * Created by heyimblake on 8/23/2015.

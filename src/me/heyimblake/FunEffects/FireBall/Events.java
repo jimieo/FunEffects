@@ -16,7 +16,8 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Random;
 
-import static me.heyimblake.FunEffects.APIs.Strings.*;
+import static me.heyimblake.FunEffects.Utils.Strings.*;
+import static me.heyimblake.FunEffects.Utils.Booleans.*;
 
 /**
  * Created by heyimblake on 10/12/15.

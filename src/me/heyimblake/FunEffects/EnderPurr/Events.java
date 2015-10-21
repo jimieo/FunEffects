@@ -12,7 +12,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 
-import static me.heyimblake.FunEffects.APIs.Strings.*;
+import static me.heyimblake.FunEffects.Utils.Strings.*;
+import static me.heyimblake.FunEffects.Utils.Booleans.*;
 
 /**
  * Created by heyimblake on 10/12/15.

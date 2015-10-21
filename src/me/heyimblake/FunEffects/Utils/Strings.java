@@ -1,4 +1,4 @@
-package me.heyimblake.FunEffects.APIs;
+package me.heyimblake.FunEffects.Utils;
 
 import org.bukkit.ChatColor;
 
@@ -11,10 +11,6 @@ public class Strings {
     public static char heavyline = '\u2502';
     public static char heavyarrow = '\u27A4';
     public static char doublerightarrow ='\u00BB';
-
-    public static boolean autoinvon = true;
-    public static boolean enderpurron = true;
-    public static boolean fireballon = true;
 
     public static final String TAG = ChatColor.DARK_GRAY+""+heavyline+ChatColor.AQUA+" FunEffects "+ChatColor.DARK_GRAY+""+heavyline+ChatColor.GRAY+" ";
     public static final String NONPLAYERERR = TAG+ChatColor.DARK_RED+"You must be a player to use this.";

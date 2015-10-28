@@ -8,5 +8,6 @@ public class Booleans {
     public static boolean autoinvon = true;
     public static boolean enderpurron = true;
     public static boolean fireballon = true;
+    public static boolean chairson = true;
 
 }

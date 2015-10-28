@@ -35,6 +35,12 @@ commands:
     aliases: tep
     permission: funeffects.toggleenderpurr
     permission-message: §4Insufficient Permissions.
+  togglechairs:
+    description: Toggles chairs.
+    usage: /<command>
+    aliases: tep
+    permission: funeffects.togglechairs
+    permission-message: §4Insufficient Permissions.
 permissions:
    funeffects.*:
      description: Gives access to all FunEffects commands!
@@ -45,4 +51,5 @@ permissions:
        funeffects.usechair: true
        funeffects.togglefireball: true
        funeffects.toggleenderpurr: true
+       funeffects.togglechairs: true
      default: op

@@ -25,6 +25,7 @@ public class Main extends JavaPlugin {
         getCommand("toggleautoinv").setExecutor(new toggleAutoInvCMD());
         getCommand("toggleenderpurr").setExecutor(new toggleEnderPurrCMD());
         getCommand("togglefireball").setExecutor(new toggleFireBallCMD());
+        getCommand("togglechairs").setExecutor(new toggleChairsCMD());
     }
     @Override
     public void onDisable(){

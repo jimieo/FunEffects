@@ -38,7 +38,7 @@
                 <configuration>
                     <artifactSet>
                         <includes>
-                    <!-- Shading here -->
+                            <include>io.github.theluca98:textapi:*:*</include>
                         </includes>
                     </artifactSet>
                 </configuration>
@@ -74,6 +74,13 @@
             <artifactId>bukkit</artifactId>
             <version>1.8.8-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.theluca98</groupId>
+            <artifactId>TextAPI</artifactId>
+            <version>1.8.8-R2.0</version>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>

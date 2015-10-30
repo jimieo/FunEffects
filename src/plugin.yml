@@ -38,7 +38,7 @@ commands:
   togglechairs:
     description: Toggles chairs.
     usage: /<command>
-    aliases: tep
+    aliases: tch
     permission: funeffects.togglechairs
     permission-message: §4Insufficient Permissions.
 permissions:

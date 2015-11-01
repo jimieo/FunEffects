@@ -7,14 +7,19 @@ Hub-Styled Fun Effects, Tools, Items, etc! Made for 1.8 Spigot/Bukkit.
 + Chairs (Right click any upright stair to sit down for 30 seconds!)
 + Most features are toggleable
 
-Command/Action | Permission
------------- | -------------
-/giveenderpurr (player) | funeffects.giveender
-/givefireball (player) | funeffects.givefireball
-/toggleenderpurr | funeffects.toggleenderpurr
-/togglefireball | funeffects.togglefireball
-Ability to use Chairs | funeffects.usechair
-All Permissions (Default OP) | funeffects.*
+Command/Action | Permission | Alias
+------------ | ------------- | -------------
+/giveenderpurr (player) | funeffects.giveender | /gep
+/givefireball (player) | funeffects.givefireball | /gfb
+/toggleenderpurr | funeffects.toggleenderpurr | /tep
+/togglefireball | funeffects.togglefireball | /tfb
+/togglechairs | funeffects.togglechairs | /tch
+/toggleautoinv | funeffects.toggleautoinv | /tai
+/funeffectsadmin | funeffects.admincmd | /fea
+Ability to use Chairs | funeffects.usechair | n/a
+Bypass Item Cooldowns | funeffects.bypasscooldown | n/a
+All Permissions | funeffects.* | n/a
+
 
 ### Looking for a download link?
 Latest Release (.jar): http://dl.funeffects.heyimblake.me

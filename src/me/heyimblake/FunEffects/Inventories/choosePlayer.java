@@ -26,11 +26,19 @@ import static me.heyimblake.FunEffects.Utils.Strings.*;
 public class choosePlayer implements Listener {
     private static ItemStack selected;
     private static ArrayList<Player> online = new ArrayList<>();
+    private static int invsize;
     public static void showSendToWhoMenu(Player p, ItemStack selectedItem) {
         if (Bukkit.getOnlinePlayers().size() <= 54) {
+
+            if (Bukkit.getOnlinePlayers().size() <= 9) invsize = 9;
+            else if (Bukkit.getOnlinePlayers().size() <= 27) invsize = 27;
+            else if (Bukkit.getOnlinePlayers().size() <= 36) invsize = 36;
+            else if (Bukkit.getOnlinePlayers().size() <= 45) invsize = 45;
+            else if (Bukkit.getOnlinePlayers().size() <= 54) invsize = 54;
+
             online.clear();
             online.addAll(Bukkit.getOnlinePlayers());
-            Inventory choosePInv = Bukkit.createInventory(p, 54, "Select a Player");
+            Inventory choosePInv = Bukkit.createInventory(p, invsize, "Select a Player");
             for (int i = 0; i < online.size(); i++) {
                 String playerName = online.get(i).getName();
                 ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);

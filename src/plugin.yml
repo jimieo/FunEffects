@@ -1,5 +1,5 @@
 name: FunEffects
-version: 1.1.7
+version: 1.1.8
 author: heyimblake
 main: me.heyimblake.FunEffects.Main
 website: http://funeffects.heyimblake.me
@@ -41,6 +41,12 @@ commands:
     aliases: tch
     permission: funeffects.togglechairs
     permission-message: §4Insufficient Permissions.
+  funeffectsadmin:
+    description: Shows Admin GUI.
+    usage: /<command>
+    aliases: fea
+    permission: funeffects.admincmd
+    permission-message: §4Insufficient Permissions.
 permissions:
    funeffects.*:
      description: Gives access to all FunEffects commands!
@@ -52,4 +58,5 @@ permissions:
        funeffects.togglefireball: true
        funeffects.toggleenderpurr: true
        funeffects.togglechairs: true
+       funeffects.admincmd: true
      default: op

@@ -4,6 +4,7 @@ import me.heyimblake.FunEffects.Commands.*;
 import me.heyimblake.FunEffects.Inventories.adminMain;
 import me.heyimblake.FunEffects.Inventories.choosePlayer;
 import me.heyimblake.FunEffects.Inventories.sendToWho;
+import me.heyimblake.FunEffects.Inventories.togglesMenu;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
@@ -26,6 +27,7 @@ public class Main extends JavaPlugin {
         pm.registerEvents(new adminMain(), this);
         pm.registerEvents(new sendToWho(), this);
         pm.registerEvents(new choosePlayer(), this);
+        pm.registerEvents(new togglesMenu(), this);
         getCommand("giveenderpurr").setExecutor(new giveEnderPurrCMD());
         getCommand("givefireball").setExecutor(new giveFireBallCMD());
         getCommand("toggleautoinv").setExecutor(new toggleAutoInvCMD());

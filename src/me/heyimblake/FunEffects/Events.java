@@ -50,7 +50,7 @@ public class Events implements Listener {
                     e.setCancelled(true);
                     sheep.setColor(DyeColor.values()[(new Random()).nextInt(DyeColor.values().length)]);
                     sheep.getWorld().playEffect(sheeploc.add(0, 0, 0), Effect.SMOKE, 3);
-                    sheep.setVelocity(new Vector(0, 2.5, 0));
+                    sheep.setVelocity(new Vector(0, 2.2, 0));
                     damager.getWorld().playSound(damager.getLocation(), Sound.ITEM_PICKUP, 10, 1);
                 }
             }

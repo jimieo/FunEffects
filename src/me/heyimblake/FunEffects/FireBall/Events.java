@@ -5,6 +5,7 @@ import me.heyimblake.FunEffects.ItemStacks.FireBall;
 import me.heyimblake.FunEffects.Main;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Firework;
@@ -106,7 +107,10 @@ public class Events implements Listener {
             if (e.getEntityType() == EntityType.SNOWBALL) {
                 if (fireballon) {
                     Location loc = e.getEntity().getLocation();
-                    if ((cooldowns.get(p.getUniqueId()) == null) || !hasCooldown(p)) {
+                    if (p.getGameMode().equals(GameMode.CREATIVE) || p.isOp() || p.hasPermission("funeffects.bypasscooldown")){
+                        doFirework(loc);
+                        return;
+                    } else if ((cooldowns.get(p.getUniqueId()) == null) || !hasCooldown(p)) {
                         activateCooldown(p);
                         doFirework(loc);
                     } else if (hasCooldown(p)){

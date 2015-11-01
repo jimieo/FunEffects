@@ -59,4 +59,5 @@ permissions:
        funeffects.toggleenderpurr: true
        funeffects.togglechairs: true
        funeffects.admincmd: true
+       funeffects.bypasscooldown: true
      default: op

@@ -25,6 +25,16 @@ import static me.heyimblake.FunEffects.Utils.Booleans.*;
  */
 public class Events implements Listener {
 
+    private void doEffects(Location loc, EnderPearl pearl){
+
+        World world = pearl.getWorld();
+        pearl.getWorld().playEffect(loc.add(0, 1, 0), Effect.HEART, 5);
+        pearl.getWorld().playEffect(loc.add(0, 0, 0), Effect.MOBSPAWNER_FLAMES, 5);
+        pearl.getWorld().playEffect(loc.add(0, 0, 0), Effect.FIREWORKS_SPARK, 5);
+        pearl.getWorld().playEffect(loc.add(0, 1, 0), Effect.MAGIC_CRIT, 5);
+        world.playSound(pearl.getLocation(), Sound.CAT_MEOW, 1, 1);
+    }
+
     private HashMap<UUID, Long> cooldowns = new HashMap<>();
     final int seconds = 1;
 
@@ -47,16 +57,14 @@ public class Events implements Listener {
         if (e.getEntity() instanceof EnderPearl) {
             if (e.getEntity().getType() == EntityType.ENDER_PEARL) {
                 if (enderpurron) {
-                    if ((cooldowns.get(p.getUniqueId()) == null) || !hasCooldown(p)) {
+                    Location loc = e.getEntity().getLocation();
+                    EnderPearl pearl = (EnderPearl) e.getEntity();
+                    if (p.isOp() || p.hasPermission("funeffects.bypasscooldown")){
+                        doEffects(loc, pearl);
+                        return;
+                    } else if ((cooldowns.get(p.getUniqueId()) == null) || !hasCooldown(p)) {
                         activateCooldown(p);
-                        Location loc = e.getEntity().getLocation();
-                        EnderPearl pearl = (EnderPearl) e.getEntity();
-                        World world = pearl.getWorld();
-                        pearl.getWorld().playEffect(loc.add(0, 1, 0), Effect.HEART, 5);
-                        pearl.getWorld().playEffect(loc.add(0, 0, 0), Effect.MOBSPAWNER_FLAMES, 5);
-                        pearl.getWorld().playEffect(loc.add(0, 0, 0), Effect.FIREWORKS_SPARK, 5);
-                        pearl.getWorld().playEffect(loc.add(0, 1, 0), Effect.MAGIC_CRIT, 5);
-                        world.playSound(pearl.getLocation(), Sound.CAT_MEOW, 1, 1);
+                        doEffects(loc, pearl);
                     } else if (hasCooldown(p)){
                         ItemStack enderPurr = EnderPurr.createEnderPurr(1);
                         p.getInventory().addItem(enderPurr);

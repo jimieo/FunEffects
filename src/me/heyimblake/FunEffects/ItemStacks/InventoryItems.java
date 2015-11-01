@@ -66,7 +66,7 @@ public class InventoryItems {
         return arrow;
     }
     public static ItemStack togglesItem(){
-        ItemStack cmd = new ItemStack(Material.COMMAND, 1);
+        ItemStack cmd = new ItemStack(Material.REDSTONE_COMPARATOR, 1);
         ItemMeta cmdMeta = cmd.getItemMeta();
         cmdMeta.setDisplayName(ChatColor.YELLOW+"Toggles");
         cmdMeta.setLore(Arrays.asList(ChatColor.GRAY+"Use this to toggle settings on or off.","",ChatColor.DARK_GRAY+""+heavyarrow+ChatColor.GOLD+" Click to Select"));
@@ -74,7 +74,7 @@ public class InventoryItems {
         return cmd;
     }
     public static ItemStack toggledOffItem(){
-        ItemStack is = new ItemStack (Material.STAINED_GLASS_PANE, 1, (short) 14);
+        ItemStack is = new ItemStack (Material.SULPHUR);
         ItemMeta isIM = is.getItemMeta();
         isIM.setDisplayName(ChatColor.RED+"Toggled Off");
         isIM.setLore(Arrays.asList(ChatColor.GRAY+"This setting is toggled off.",ChatColor.GRAY+"Click on the item to toggle it."));
@@ -82,7 +82,7 @@ public class InventoryItems {
         return is;
     }
     public static ItemStack toggledOnItem(){
-        ItemStack dyeON = new ItemStack (Material.STAINED_GLASS_PANE, 1, (short) 5);
+        ItemStack dyeON = new ItemStack (Material.GLOWSTONE_DUST);
         ItemMeta isIM = dyeON.getItemMeta();
         isIM.setDisplayName(ChatColor.GREEN+"Toggled On");
         isIM.setLore(Arrays.asList(ChatColor.GRAY+"This setting is toggled on.",ChatColor.GRAY+"Click on the item to toggle it."));

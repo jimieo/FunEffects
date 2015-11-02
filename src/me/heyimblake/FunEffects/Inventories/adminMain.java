@@ -15,8 +15,9 @@ import org.bukkit.inventory.Inventory;
 public class adminMain implements Listener {
     public static void showAdminMainMenu(Player p) {
         Inventory adminMainInv = Bukkit.createInventory(p, 9, "FunEffects Admin GUI");
-        adminMainInv.setItem(3, InventoryItems.enderPurrMainMenu());
-        adminMainInv.setItem(5, InventoryItems.fireBallMainMenu());
+        adminMainInv.setItem(2, InventoryItems.enderPurrMainMenu());
+        adminMainInv.setItem(4, InventoryItems.togglesItem());
+        adminMainInv.setItem(6, InventoryItems.fireBallMainMenu());
         p.openInventory(adminMainInv);
     }
 
@@ -46,6 +47,12 @@ public class adminMain implements Listener {
                     p.playSound(p.getLocation(), Sound.CLICK, 10, 1);
                     sendToWho.showSendToWhoMenu(p, InventoryItems.fireBallMainMenu());
                     return;
+                }
+                if (e.getCurrentItem().equals(InventoryItems.togglesItem())){
+                    e.setCancelled(true);
+                    p.closeInventory();
+                    p.playSound(p.getLocation(), Sound.CLICK, 10, 1);
+                    togglesMenu.showTogglesMenu(p);
                 }
             }
         }

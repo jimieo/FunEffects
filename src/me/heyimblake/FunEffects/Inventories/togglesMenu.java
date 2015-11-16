@@ -20,11 +20,10 @@ import static me.heyimblake.FunEffects.Utils.Strings.*;
 public class togglesMenu implements Listener {
     public static void showTogglesMenu(Player p) {
 
-        //TODO Eggsplosion toggle
-
         Inventory togglesMenu = Bukkit.createInventory(p, 18, "FunEffects Toggles");
 
         togglesMenu.setItem(1, InventoryItems.toggleChairsItem());
+        togglesMenu.setItem(2, InventoryItems.toggleEggsplosion());
         togglesMenu.setItem(3, InventoryItems.toggleEnderPurr());
         togglesMenu.setItem(5, InventoryItems.toggleFireBall());
         togglesMenu.setItem(7, InventoryItems.toggleAutoInv(p));
@@ -51,6 +50,12 @@ public class togglesMenu implements Listener {
             togglesMenu.setItem(16, InventoryItems.toggledOffItem());
         }
 
+        if (eggon){
+            togglesMenu.setItem(11,InventoryItems.toggledOnItem());
+        } else {
+            togglesMenu.setItem(11, InventoryItems.toggledOffItem());
+        }
+
         p.openInventory(togglesMenu);
     }
 
@@ -72,21 +77,15 @@ public class togglesMenu implements Listener {
                     p.playSound(p.getLocation(), Sound.CLICK, 10, 1);
                     p.closeInventory();
                     adminMain.showAdminMainMenu(p);
-                    return;
-                }
-                if (e.getCurrentItem().equals(InventoryItems.toggledOffItem())) {
+                } else if (e.getCurrentItem().equals(InventoryItems.toggledOffItem())) {
                     e.setCancelled(true);
                     p.sendMessage(TAG+ ChatColor.DARK_RED+"Click on the actual item to toggle the setting.");
                     p.playSound(p.getLocation(), Sound.NOTE_BASS, 10, 1);
-                    return;
-                }
-                if (e.getCurrentItem().equals(InventoryItems.toggledOnItem())) {
+                } else if (e.getCurrentItem().equals(InventoryItems.toggledOnItem())) {
                     e.setCancelled(true);
                     p.sendMessage(TAG+ ChatColor.DARK_RED+"Click on the actual item to toggle the setting.");
                     p.playSound(p.getLocation(), Sound.NOTE_BASS, 10, 1);
-                    return;
-                }
-                if (e.getCurrentItem().equals(InventoryItems.toggleChairsItem())) {
+                } else if (e.getCurrentItem().equals(InventoryItems.toggleChairsItem())) {
                     e.setCancelled(true);
                     p.playSound(p.getLocation(), Sound.ITEM_PICKUP, 10, 1);
                     if (chairson) {
@@ -96,9 +95,7 @@ public class togglesMenu implements Listener {
                     }
                     p.closeInventory();
                     showTogglesMenu(p);
-                    return;
-                }
-                if (e.getCurrentItem().equals(InventoryItems.toggleFireBall())) {
+                } else if (e.getCurrentItem().equals(InventoryItems.toggleFireBall())) {
                     e.setCancelled(true);
                     p.playSound(p.getLocation(), Sound.ITEM_PICKUP, 10, 1);
                     if (fireballon) {
@@ -108,9 +105,7 @@ public class togglesMenu implements Listener {
                     }
                     p.closeInventory();
                     showTogglesMenu(p);
-                    return;
-                }
-                if (e.getCurrentItem().equals(InventoryItems.toggleEnderPurr())) {
+                } else if (e.getCurrentItem().equals(InventoryItems.toggleEnderPurr())) {
                     e.setCancelled(true);
                     p.playSound(p.getLocation(), Sound.ITEM_PICKUP, 10, 1);
                     if (enderpurron) {
@@ -120,9 +115,17 @@ public class togglesMenu implements Listener {
                     }
                     p.closeInventory();
                     showTogglesMenu(p);
-                    return;
-                }
-                if (e.getCurrentItem().getType().equals(Material.SKULL_ITEM)) {
+                } else if (e.getCurrentItem().equals(InventoryItems.toggleEggsplosion())) {
+                    e.setCancelled(true);
+                    p.playSound(p.getLocation(), Sound.ITEM_PICKUP, 10, 1);
+                    if (eggon) {
+                        eggon = false;
+                    } else {
+                        eggon = true;
+                    }
+                    p.closeInventory();
+                    showTogglesMenu(p);
+                }else if (e.getCurrentItem().getType().equals(Material.SKULL_ITEM)) {
                     e.setCancelled(true);
                     p.playSound(p.getLocation(), Sound.ITEM_PICKUP, 10, 1);
                     if (autoinvon) {
@@ -132,7 +135,6 @@ public class togglesMenu implements Listener {
                     }
                     p.closeInventory();
                     showTogglesMenu(p);
-                    return;
                 }
             }
         }

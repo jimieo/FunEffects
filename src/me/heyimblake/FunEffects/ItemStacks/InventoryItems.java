@@ -108,7 +108,7 @@ public class InventoryItems {
     public static ItemStack toggleEnderPurr(){
         ItemStack ep = new ItemStack(Material.ENDER_PEARL, 1);
         ItemMeta epMeta = ep.getItemMeta();
-        epMeta.setDisplayName("Toggle "+EnderPurrName);
+        epMeta.setDisplayName(ChatColor.GRAY+"Toggle "+EnderPurrName);
         epMeta.setLore(Arrays.asList(ChatColor.GRAY+"Toggles EnderPurrs usability.","",ChatColor.DARK_GRAY+""+heavyarrow+ChatColor.GOLD+" Click to Toggle"));
         ep.setItemMeta(epMeta);
         return ep;
@@ -116,7 +116,7 @@ public class InventoryItems {
     public static ItemStack toggleFireBall(){
         ItemStack fb = new ItemStack(Material.SNOW_BALL, 1);
         ItemMeta fbMeta = fb.getItemMeta();
-        fbMeta.setDisplayName("Toggle "+FireBallName);
+        fbMeta.setDisplayName(ChatColor.GRAY+"Toggle "+FireBallName);
         fbMeta.setLore(Arrays.asList(ChatColor.GRAY+"Toggles FireBalls usability.","",ChatColor.DARK_GRAY+""+heavyarrow+ChatColor.GOLD+" Click to Toggle"));
         fb.setItemMeta(fbMeta);
         return fb;
@@ -129,5 +129,13 @@ public class InventoryItems {
         skullMeta.setOwner(p.getName());
         skull.setItemMeta(skullMeta);
         return skull;
+    }
+    public static ItemStack toggleEggsplosion(){
+        ItemStack egg = new ItemStack(Material.EGG, 1);
+        ItemMeta eggMeta = egg.getItemMeta();
+        eggMeta.setDisplayName(ChatColor.GRAY+"Toggle "+EggsplosionName);
+        eggMeta.setLore(Arrays.asList(ChatColor.GRAY+"Toggles Eggsplosions usability.","",ChatColor.DARK_GRAY+""+heavyarrow+ChatColor.GOLD+" Click to Togle"));
+        egg.setItemMeta(eggMeta);
+        return egg;
     }
 }

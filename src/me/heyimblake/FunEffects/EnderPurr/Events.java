@@ -27,10 +27,10 @@ public class Events implements Listener {
     private void doEffects(Location loc, EnderPearl pearl){
 
         World world = pearl.getWorld();
-        pearl.getWorld().playEffect(loc.add(0, 1, 0), Effect.HEART, 5);
-        pearl.getWorld().playEffect(loc.add(0, 0, 0), Effect.MOBSPAWNER_FLAMES, 5);
-        pearl.getWorld().playEffect(loc.add(0, 0, 0), Effect.FIREWORKS_SPARK, 5);
-        pearl.getWorld().playEffect(loc.add(0, 1, 0), Effect.MAGIC_CRIT, 5);
+        world.playEffect(loc.add(0, 1, 0), Effect.HEART, 5);
+        world.playEffect(loc.add(0, 0, 0), Effect.MOBSPAWNER_FLAMES, 5);
+        world.playEffect(loc.add(0, 0, 0), Effect.FIREWORKS_SPARK, 5);
+        world.playEffect(loc.add(0, 1, 0), Effect.MAGIC_CRIT, 5);
         world.playSound(pearl.getLocation(), Sound.CAT_MEOW, 1, 1);
     }
 

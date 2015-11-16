@@ -84,7 +84,7 @@ public class Events implements Listener {
     }
 
     private HashMap<UUID, Long> cooldowns = new HashMap<>();
-    final int seconds = 1;
+    final int seconds = 2;
 
     private boolean hasCooldown(Player player) {
         if (cooldowns.get(player.getUniqueId()) < (System.currentTimeMillis() - seconds * 1000)) {

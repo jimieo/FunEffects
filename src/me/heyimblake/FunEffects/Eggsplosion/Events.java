@@ -23,7 +23,7 @@ import static me.heyimblake.FunEffects.Utils.Booleans.*;
 public class Events implements Listener {
     private void doEffects(Location loc, Egg egg){
         World world = egg.getWorld();
-        world.playEffect(loc, Effect.EXPLOSION_LARGE, 1);
+        world.playEffect(loc, Effect.EXPLOSION_HUGE, 1);
         world.playEffect(loc.add(0, .5, 0), Effect.SMOKE, 3);
         world.playEffect(loc, Effect.MOBSPAWNER_FLAMES, 2);
         world.playSound(loc, Sound.CHICKEN_IDLE, 10, 1);
@@ -31,7 +31,7 @@ public class Events implements Listener {
     }
 
     private HashMap<UUID, Long> cooldowns = new HashMap<>();
-    final int seconds = 1;
+    final int seconds = 2;
 
     private boolean hasCooldown(Player player) {
         if (cooldowns.get(player.getUniqueId()) < (System.currentTimeMillis() - seconds * 1000)) {
@@ -49,7 +49,7 @@ public class Events implements Listener {
     @EventHandler
     public void projectileLand(ProjectileHitEvent e) {
         Player p = (Player) e.getEntity().getShooter();
-        if (e.getEntity() instanceof EnderPearl) {
+        if (e.getEntity() instanceof Egg) {
             if (e.getEntity().getType() == EntityType.EGG) {
                 if (eggon) {
                     if (p.hasPermission("funeffects.useEggsplosions") || p.isOp()) {
@@ -57,7 +57,6 @@ public class Events implements Listener {
                         Egg egg = (Egg) e.getEntity();
                         if (p.isOp() || p.hasPermission("funeffects.bypasscooldown") || p.getGameMode().equals(GameMode.CREATIVE)) {
                             doEffects(loc, egg);
-                            return;
                         } else if ((cooldowns.get(p.getUniqueId()) == null) || !hasCooldown(p)) {
                             activateCooldown(p);
                             doEffects(loc, egg);

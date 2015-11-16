@@ -64,30 +64,25 @@ public class sendToWho implements Listener {
                         } else if (selected.equals(InventoryItems.eggsplosionMainMenu())) {
                             p.getInventory().addItem(Gadgets.createEggsplosion(16));
                         }
-                        return;
                     }
-                } else if (e.getCurrentItem().equals(InventoryItems.anotherPlayerItem())) {
-                    e.setCancelled(true);
-                    p.playSound(p.getLocation(), Sound.CLICK, 10, 1);
-                    p.closeInventory();
-                    choosePlayer.showSendToWhoMenu(p, selected);
-                    return;
+                    else if (e.getCurrentItem().getItemMeta().getDisplayName().equals(ChatColor.GREEN+"Give to Another Player")) {
+                        e.setCancelled(true);
+                        p.playSound(p.getLocation(), Sound.CLICK, 10, 1);
+                        p.closeInventory();
+                        choosePlayer.showSendToWhoMenu(p, selected);
+                    }
                 } else if (e.getCurrentItem().equals(InventoryItems.currentItem())) {
                     e.setCancelled(true);
                     p.playSound(p.getLocation(), Sound.NOTE_BASS, 10, 1);
-                    return;
                 } else if (e.getCurrentItem().equals(Gadgets.createFireball())) {
                     e.setCancelled(true);
                     p.playSound(p.getLocation(), Sound.NOTE_BASS, 10, 1);
-                    return;
                 } else if (e.getCurrentItem().equals(Gadgets.createEnderPurr())) {
                     e.setCancelled(true);
                     p.playSound(p.getLocation(), Sound.NOTE_BASS, 10, 1);
-                    return;
                 } else if (e.getCurrentItem().equals(Gadgets.createEggsplosion())) {
                     e.setCancelled(true);
                     p.playSound(p.getLocation(), Sound.NOTE_BASS, 10, 1);
-                    return;
                 } else if (e.getCurrentItem().equals(InventoryItems.backArrow())){
                     e.setCancelled(true);
                     p.playSound(p.getLocation(), Sound.CLICK, 10, 1);

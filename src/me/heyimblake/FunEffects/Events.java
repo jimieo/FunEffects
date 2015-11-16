@@ -25,14 +25,17 @@ public class Events implements Listener {
         Player p = e.getPlayer();
         ItemStack enderPurr = Gadgets.createEnderPurr(16);
         ItemStack sb = Gadgets.createFireball(16);
+        ItemStack egg = Gadgets.createEggsplosion(16);
         if (autoinvon) {
             if (!p.getInventory().contains(enderPurr)) {
                 p.getInventory().remove(Material.ENDER_PEARL);
                 p.getInventory().addItem(Gadgets.createEnderPurr(16));
-            }
-            if (!p.getInventory().contains(sb)) {
+            } if (!p.getInventory().contains(sb)) {
                 p.getInventory().remove(Material.SNOW_BALL);
                 p.getInventory().addItem(Gadgets.createFireball(16));
+            }  if (!p.getInventory().contains(egg)) {
+                p.getInventory().remove(Material.EGG);
+                p.getInventory().addItem(Gadgets.createEggsplosion(16));
             }
         }
     }

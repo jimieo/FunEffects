@@ -19,6 +19,9 @@ import static me.heyimblake.FunEffects.Utils.Strings.*;
  */
 public class togglesMenu implements Listener {
     public static void showTogglesMenu(Player p) {
+
+        //TODO Eggsplosion toggle
+
         Inventory togglesMenu = Bukkit.createInventory(p, 18, "FunEffects Toggles");
 
         togglesMenu.setItem(1, InventoryItems.toggleChairsItem());

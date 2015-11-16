@@ -18,6 +18,7 @@ public class adminMain implements Listener {
         adminMainInv.setItem(2, InventoryItems.enderPurrMainMenu());
         adminMainInv.setItem(4, InventoryItems.togglesItem());
         adminMainInv.setItem(6, InventoryItems.fireBallMainMenu());
+        adminMainInv.setItem(8, InventoryItems.eggsplosionMainMenu());
         p.openInventory(adminMainInv);
     }
 
@@ -39,20 +40,21 @@ public class adminMain implements Listener {
                     p.closeInventory();
                     p.playSound(p.getLocation(), Sound.CLICK, 10, 1);
                     sendToWho.showSendToWhoMenu(p, InventoryItems.enderPurrMainMenu());
-                    return;
-                }
-                if (e.getCurrentItem().equals(InventoryItems.fireBallMainMenu())) {
+                } else if (e.getCurrentItem().equals(InventoryItems.fireBallMainMenu())) {
                     e.setCancelled(true);
                     p.closeInventory();
                     p.playSound(p.getLocation(), Sound.CLICK, 10, 1);
                     sendToWho.showSendToWhoMenu(p, InventoryItems.fireBallMainMenu());
-                    return;
-                }
-                if (e.getCurrentItem().equals(InventoryItems.togglesItem())){
+                } else if (e.getCurrentItem().equals(InventoryItems.togglesItem())){
                     e.setCancelled(true);
                     p.closeInventory();
                     p.playSound(p.getLocation(), Sound.CLICK, 10, 1);
                     togglesMenu.showTogglesMenu(p);
+                } else if (e.getCurrentItem().equals(InventoryItems.eggsplosionMainMenu())){
+                    e.setCancelled(true);
+                    p.closeInventory();
+                    p.playSound(p.getLocation(), Sound.CLICK, 10, 1);
+                    sendToWho.showSendToWhoMenu(p, InventoryItems.eggsplosionMainMenu());
                 }
             }
         }

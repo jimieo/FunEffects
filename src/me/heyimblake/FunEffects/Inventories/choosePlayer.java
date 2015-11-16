@@ -77,12 +77,13 @@ public class choosePlayer implements Listener {
                     if (selected.equals(InventoryItems.enderPurrMainMenu())) {
                         target.getInventory().addItem(Gadgets.createEnderPurr(16));
                         target.sendMessage(TAG+"You have recieved some EnderPearls.");
-                    }
-                    if (selected.equals(InventoryItems.fireBallMainMenu())) {
+                    } else if (selected.equals(InventoryItems.fireBallMainMenu())) {
                         target.getInventory().addItem(Gadgets.createFireball(16));
                         target.sendMessage(TAG+"You have recieved some FireBalls.");
+                    } else if (selected.equals(InventoryItems.eggsplosionMainMenu())) {
+                        target.getInventory().addItem(Gadgets.createEggsplosion(16));
+                        target.sendMessage(TAG+"You have recieved some Eggsplosions.");
                     }
-                    return;
                 }
             }
         }

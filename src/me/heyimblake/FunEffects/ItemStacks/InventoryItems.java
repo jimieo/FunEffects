@@ -17,6 +17,14 @@ import static me.heyimblake.FunEffects.Utils.Strings.*;
  * Created by heyimblake on 10/31/2015.
  */
 public class InventoryItems {
+    public static ItemStack eggsplosionMainMenu(){
+        ItemStack egg = new ItemStack(Material.EGG, 1);
+        ItemMeta eggMeta = egg.getItemMeta();
+        eggMeta.setDisplayName("Give "+EggsplosionName);
+        eggMeta.setLore(Arrays.asList(ChatColor.GRAY+"Give somebody some Eggsplosions!","",ChatColor.DARK_GRAY+""+heavyarrow+ChatColor.GOLD+" Click to Select"));
+        egg.setItemMeta(eggMeta);
+        return egg;
+    }
     public static ItemStack enderPurrMainMenu(){
         ItemStack ep = new ItemStack(Material.ENDER_PEARL, 1);
         ItemMeta epMeta = ep.getItemMeta();

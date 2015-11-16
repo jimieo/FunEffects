@@ -21,4 +21,7 @@ public class Strings {
 
     public static final String FireBallName = ChatColor.RED+"Fire"+ChatColor.YELLOW+""+ChatColor.BOLD+"Ball";
     public static final List FireBallLore = Arrays.asList(ChatColor.GRAY+"Pew pew!"," ",ChatColor.DARK_AQUA+""+heavyarrow+ChatColor.AQUA+" Right Click to use.");
+
+    public static final String EggsplosionName = ChatColor.GREEN+""+ChatColor.BOLD+"Egg"+ChatColor.YELLOW+"splosion";
+    public static final List EggsplosionLore = Arrays.asList(ChatColor.GRAY + "Erm, boom?","",ChatColor.DARK_AQUA+""+heavyarrow+ChatColor.AQUA+" Right Click to use.");
 }

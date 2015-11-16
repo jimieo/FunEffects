@@ -1,8 +1,11 @@
 package me.heyimblake.FunEffects.ItemStacks;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.Arrays;
 
 import static me.heyimblake.FunEffects.Utils.Strings.*;
 
@@ -41,5 +44,21 @@ public class Gadgets {
         sbmeta.setLore(FireBallLore);
         sb.setItemMeta(sbmeta);
         return sb;
+    }
+    public static ItemStack createEggsplosion(){
+        ItemStack egg = new ItemStack(Material.EGG, 16);
+        ItemMeta eggMeta = egg.getItemMeta();
+        eggMeta.setDisplayName(EggsplosionName);
+        eggMeta.setLore(EggsplosionLore);
+        egg.setItemMeta(eggMeta);
+        return egg;
+    }
+    public static ItemStack createEggsplosion(int amount){
+        ItemStack egg = new ItemStack(Material.EGG, amount);
+        ItemMeta eggMeta = egg.getItemMeta();
+        eggMeta.setDisplayName(EggsplosionName);
+        eggMeta.setLore(EggsplosionLore);
+        egg.setItemMeta(eggMeta);
+        return egg;
     }
 }

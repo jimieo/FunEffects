@@ -56,17 +56,19 @@ public class Events implements Listener {
         if (e.getEntity() instanceof EnderPearl) {
             if (e.getEntity().getType() == EntityType.ENDER_PEARL) {
                 if (enderpurron) {
-                    Location loc = e.getEntity().getLocation();
-                    EnderPearl pearl = (EnderPearl) e.getEntity();
-                    if (p.isOp() || p.hasPermission("funeffects.bypasscooldown")){
-                        doEffects(loc, pearl);
-                        return;
-                    } else if ((cooldowns.get(p.getUniqueId()) == null) || !hasCooldown(p)) {
-                        activateCooldown(p);
-                        doEffects(loc, pearl);
-                    } else if (hasCooldown(p)){
-                        ItemStack enderPurr = Gadgets.createEnderPurr(1);
-                        p.getInventory().addItem(enderPurr);
+                    if (p.hasPermission("funeffects.useEnderPurr") || p.isOp()) {
+                        Location loc = e.getEntity().getLocation();
+                        EnderPearl pearl = (EnderPearl) e.getEntity();
+                        if (p.isOp() || p.hasPermission("funeffects.bypasscooldown")) {
+                            doEffects(loc, pearl);
+                            return;
+                        } else if ((cooldowns.get(p.getUniqueId()) == null) || !hasCooldown(p)) {
+                            activateCooldown(p);
+                            doEffects(loc, pearl);
+                        } else if (hasCooldown(p)) {
+                            ItemStack enderPurr = Gadgets.createEnderPurr(1);
+                            p.getInventory().addItem(enderPurr);
+                        }
                     }
                 }
             }

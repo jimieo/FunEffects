@@ -67,4 +67,15 @@ permissions:
        funeffects.admincmd: true
        funeffects.bypasscooldown: true
        funeffects.toggleeggs: true
+       funeffects.useEggsplosions: true
+       funeffects.useEnderPurr: true
+       funeffects.useFireBall: true
      default: op
+   funeffects.player:
+     description: Gives access to all FunEffects commands!
+     children:
+       funeffects.usechair: true
+       funeffects.useEggsplosions: true
+       funeffects.useEnderPurr: true
+       funeffects.useFireBall: true
+     default: true

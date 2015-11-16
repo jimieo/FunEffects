@@ -52,17 +52,19 @@ public class Events implements Listener {
         if (e.getEntity() instanceof EnderPearl) {
             if (e.getEntity().getType() == EntityType.EGG) {
                 if (eggon) {
-                    Location loc = e.getEntity().getLocation();
-                    Egg egg = (Egg) e.getEntity();
-                    if (p.isOp() || p.hasPermission("funeffects.bypasscooldown") || p.getGameMode().equals(GameMode.CREATIVE)){
-                        doEffects(loc, egg);
-                        return;
-                    } else if ((cooldowns.get(p.getUniqueId()) == null) || !hasCooldown(p)) {
-                        activateCooldown(p);
-                        doEffects(loc, egg);
-                    } else if (hasCooldown(p)){
-                        ItemStack eggItem = Gadgets.createEggsplosion(1);
-                        p.getInventory().addItem(eggItem);
+                    if (p.hasPermission("funeffects.useEggsplosions") || p.isOp()) {
+                        Location loc = e.getEntity().getLocation();
+                        Egg egg = (Egg) e.getEntity();
+                        if (p.isOp() || p.hasPermission("funeffects.bypasscooldown") || p.getGameMode().equals(GameMode.CREATIVE)) {
+                            doEffects(loc, egg);
+                            return;
+                        } else if ((cooldowns.get(p.getUniqueId()) == null) || !hasCooldown(p)) {
+                            activateCooldown(p);
+                            doEffects(loc, egg);
+                        } else if (hasCooldown(p)) {
+                            ItemStack eggItem = Gadgets.createEggsplosion(1);
+                            p.getInventory().addItem(eggItem);
+                        }
                     }
                 }
             }

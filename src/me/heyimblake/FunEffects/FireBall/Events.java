@@ -105,16 +105,18 @@ public class Events implements Listener {
         if (e.getEntity() instanceof Snowball) {
             if (e.getEntityType() == EntityType.SNOWBALL) {
                 if (fireballon) {
-                    Location loc = e.getEntity().getLocation();
-                    if (p.getGameMode().equals(GameMode.CREATIVE) || p.isOp() || p.hasPermission("funeffects.bypasscooldown")){
-                        doFirework(loc);
-                        return;
-                    } else if ((cooldowns.get(p.getUniqueId()) == null) || !hasCooldown(p)) {
-                        activateCooldown(p);
-                        doFirework(loc);
-                    } else if (hasCooldown(p)){
-                        ItemStack fireball = Gadgets.createFireball(1);
-                        p.getInventory().addItem(fireball);
+                    if (p.hasPermission("funeffects.useFireBall") || p.isOp()) {
+                        Location loc = e.getEntity().getLocation();
+                        if (p.getGameMode().equals(GameMode.CREATIVE) || p.isOp() || p.hasPermission("funeffects.bypasscooldown")) {
+                            doFirework(loc);
+                            return;
+                        } else if ((cooldowns.get(p.getUniqueId()) == null) || !hasCooldown(p)) {
+                            activateCooldown(p);
+                            doFirework(loc);
+                        } else if (hasCooldown(p)) {
+                            ItemStack fireball = Gadgets.createFireball(1);
+                            p.getInventory().addItem(fireball);
+                        }
                     }
                 }
             }

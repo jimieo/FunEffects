@@ -20,14 +20,14 @@ import static me.heyimblake.FunEffects.Utils.Strings.*;
 public class togglesMenu implements Listener {
     public static void showTogglesMenu(Player p) {
 
-        Inventory togglesMenu = Bukkit.createInventory(p, 18, "FunEffects Toggles");
+        Inventory togglesMenu = Bukkit.createInventory(p, 36, "FunEffects Toggles");
 
         togglesMenu.setItem(1, InventoryItems.toggleChairsItem());
-        togglesMenu.setItem(2, InventoryItems.toggleEggsplosion());
+        togglesMenu.setItem(19, InventoryItems.toggleEggsplosion());
         togglesMenu.setItem(3, InventoryItems.toggleEnderPurr());
         togglesMenu.setItem(5, InventoryItems.toggleFireBall());
         togglesMenu.setItem(7, InventoryItems.toggleAutoInv(p));
-        togglesMenu.setItem(9, InventoryItems.backArrow());
+        togglesMenu.setItem(27, InventoryItems.backArrow());
 
         if (chairson) {
             togglesMenu.setItem(10, InventoryItems.toggledOnItem());
@@ -51,9 +51,9 @@ public class togglesMenu implements Listener {
         }
 
         if (eggon){
-            togglesMenu.setItem(11,InventoryItems.toggledOnItem());
+            togglesMenu.setItem(28,InventoryItems.toggledOnItem());
         } else {
-            togglesMenu.setItem(11, InventoryItems.toggledOffItem());
+            togglesMenu.setItem(28, InventoryItems.toggledOffItem());
         }
 
         p.openInventory(togglesMenu);

@@ -1,6 +1,6 @@
 package me.heyimblake.FunEffects.EnderPurr;
 
-import me.heyimblake.FunEffects.ItemStacks.EnderPurr;
+import me.heyimblake.FunEffects.ItemStacks.Gadgets;
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Sound;
@@ -17,7 +17,6 @@ import org.bukkit.inventory.ItemStack;
 import java.util.HashMap;
 import java.util.UUID;
 
-import static me.heyimblake.FunEffects.Utils.Strings.*;
 import static me.heyimblake.FunEffects.Utils.Booleans.*;
 
 /**
@@ -66,7 +65,7 @@ public class Events implements Listener {
                         activateCooldown(p);
                         doEffects(loc, pearl);
                     } else if (hasCooldown(p)){
-                        ItemStack enderPurr = EnderPurr.createEnderPurr(1);
+                        ItemStack enderPurr = Gadgets.createEnderPurr(1);
                         p.getInventory().addItem(enderPurr);
                     }
                 }

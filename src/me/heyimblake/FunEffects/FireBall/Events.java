@@ -1,7 +1,6 @@
 package me.heyimblake.FunEffects.FireBall;
 
-import me.heyimblake.FunEffects.ItemStacks.EnderPurr;
-import me.heyimblake.FunEffects.ItemStacks.FireBall;
+import me.heyimblake.FunEffects.ItemStacks.Gadgets;
 import me.heyimblake.FunEffects.Main;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
@@ -114,7 +113,7 @@ public class Events implements Listener {
                         activateCooldown(p);
                         doFirework(loc);
                     } else if (hasCooldown(p)){
-                        ItemStack fireball = FireBall.createFireball(1);
+                        ItemStack fireball = Gadgets.createFireball(1);
                         p.getInventory().addItem(fireball);
                     }
                 }

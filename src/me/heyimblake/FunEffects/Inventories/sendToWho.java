@@ -1,7 +1,6 @@
 package me.heyimblake.FunEffects.Inventories;
 
-import me.heyimblake.FunEffects.ItemStacks.EnderPurr;
-import me.heyimblake.FunEffects.ItemStacks.FireBall;
+import me.heyimblake.FunEffects.ItemStacks.Gadgets;
 import me.heyimblake.FunEffects.ItemStacks.InventoryItems;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -26,9 +25,9 @@ public class sendToWho implements Listener {
         adminMainInv.setItem(15, InventoryItems.anotherPlayerItem());
 
         if (selectedItem.equals(InventoryItems.enderPurrMainMenu())) {
-            adminMainInv.setItem(22, EnderPurr.createEnderPurr());
+            adminMainInv.setItem(22, Gadgets.createEnderPurr());
         } else if (selectedItem.equals(InventoryItems.fireBallMainMenu())) {
-            adminMainInv.setItem(22, FireBall.createFireball());
+            adminMainInv.setItem(22, Gadgets.createFireball());
         }
         adminMainInv.setItem(18, InventoryItems.backArrow());
         adminMainInv.setItem(21, InventoryItems.currentItem());
@@ -57,10 +56,10 @@ public class sendToWho implements Listener {
                         p.playSound(p.getLocation(), Sound.LEVEL_UP, 10, 1);
                         p.closeInventory();
                         if (selected.equals(InventoryItems.enderPurrMainMenu())) {
-                            p.getInventory().addItem(EnderPurr.createEnderPurr(16));
+                            p.getInventory().addItem(Gadgets.createEnderPurr(16));
                         }
                         if (selected.equals(InventoryItems.fireBallMainMenu())) {
-                            p.getInventory().addItem(FireBall.createFireball(16));
+                            p.getInventory().addItem(Gadgets.createFireball(16));
                         }
                         return;
                     }
@@ -79,12 +78,12 @@ public class sendToWho implements Listener {
                     p.playSound(p.getLocation(), Sound.NOTE_BASS, 10, 1);
                     return;
                 }
-                if (e.getCurrentItem().equals(FireBall.createFireball())) {
+                if (e.getCurrentItem().equals(Gadgets.createFireball())) {
                     e.setCancelled(true);
                     p.playSound(p.getLocation(), Sound.NOTE_BASS, 10, 1);
                     return;
                 }
-                if (e.getCurrentItem().equals(EnderPurr.createEnderPurr())) {
+                if (e.getCurrentItem().equals(Gadgets.createEnderPurr())) {
                     e.setCancelled(true);
                     p.playSound(p.getLocation(), Sound.NOTE_BASS, 10, 1);
                     return;

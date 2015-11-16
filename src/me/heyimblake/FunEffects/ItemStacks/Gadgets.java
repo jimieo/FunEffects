@@ -7,9 +7,25 @@ import org.bukkit.inventory.meta.ItemMeta;
 import static me.heyimblake.FunEffects.Utils.Strings.*;
 
 /**
- * Created by heyimblake on 10/9/15.
+ * Created by heyimblake on 11/16/15.
  */
-public class FireBall {
+public class Gadgets {
+    public static ItemStack createEnderPurr(int amount){
+        ItemStack enderPurr = new ItemStack(Material.ENDER_PEARL , amount);
+        ItemMeta enderMeta = enderPurr.getItemMeta();
+        enderMeta.setDisplayName(EnderPurrName);
+        enderMeta.setLore(EnderPurrLore);
+        enderPurr.setItemMeta(enderMeta);
+        return enderPurr;
+    }
+    public static ItemStack createEnderPurr(){
+        ItemStack enderPurr = new ItemStack(Material.ENDER_PEARL , 16);
+        ItemMeta enderMeta = enderPurr.getItemMeta();
+        enderMeta.setDisplayName(EnderPurrName);
+        enderMeta.setLore(EnderPurrLore);
+        enderPurr.setItemMeta(enderMeta);
+        return enderPurr;
+    }
     public static ItemStack createFireball(int amount){
         ItemStack sb = new ItemStack(Material.SNOW_BALL, amount);
         ItemMeta sbmeta = sb.getItemMeta();

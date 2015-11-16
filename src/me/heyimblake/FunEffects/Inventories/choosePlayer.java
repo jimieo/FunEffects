@@ -1,7 +1,6 @@
 package me.heyimblake.FunEffects.Inventories;
 
-import me.heyimblake.FunEffects.ItemStacks.EnderPurr;
-import me.heyimblake.FunEffects.ItemStacks.FireBall;
+import me.heyimblake.FunEffects.ItemStacks.Gadgets;
 import me.heyimblake.FunEffects.ItemStacks.InventoryItems;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -76,11 +75,11 @@ public class choosePlayer implements Listener {
                     p.playSound(p.getLocation(), Sound.LEVEL_UP, 10 ,1 );
                     p.closeInventory();
                     if (selected.equals(InventoryItems.enderPurrMainMenu())) {
-                        target.getInventory().addItem(EnderPurr.createEnderPurr(16));
+                        target.getInventory().addItem(Gadgets.createEnderPurr(16));
                         target.sendMessage(TAG+"You have recieved some EnderPearls.");
                     }
                     if (selected.equals(InventoryItems.fireBallMainMenu())) {
-                        target.getInventory().addItem(FireBall.createFireball(16));
+                        target.getInventory().addItem(Gadgets.createFireball(16));
                         target.sendMessage(TAG+"You have recieved some FireBalls.");
                     }
                     return;

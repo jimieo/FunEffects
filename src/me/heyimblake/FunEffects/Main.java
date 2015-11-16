@@ -36,6 +36,7 @@ public class Main extends JavaPlugin {
         getCommand("togglefireball").setExecutor(new toggleFireBallCMD());
         getCommand("togglechairs").setExecutor(new toggleChairsCMD());
         getCommand("funeffectsadmin").setExecutor(new funEffectsAdminCMD());
+        getCommand("toggleeggsplosions").setExecutor(new toggleEggsplosionsCMD());
     }
     @Override
     public void onDisable(){

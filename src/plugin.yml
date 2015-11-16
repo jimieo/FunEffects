@@ -1,5 +1,5 @@
 name: FunEffects
-version: 1.1.9
+version: 1.2.0
 author: heyimblake
 main: me.heyimblake.FunEffects.Main
 website: http://funeffects.heyimblake.me
@@ -47,6 +47,12 @@ commands:
     aliases: fea
     permission: funeffects.admincmd
     permission-message: §4Insufficient Permissions.
+  toggleeggsplosions:
+    description: Toggles Eggsplosions usability.
+    usage: /<command>
+    aliases: te
+    permission: funeffects.toggleeggs
+    permission-message: §4Insufficient Permissions.
 permissions:
    funeffects.*:
      description: Gives access to all FunEffects commands!
@@ -60,4 +66,5 @@ permissions:
        funeffects.togglechairs: true
        funeffects.admincmd: true
        funeffects.bypasscooldown: true
+       funeffects.toggleeggs: true
      default: op

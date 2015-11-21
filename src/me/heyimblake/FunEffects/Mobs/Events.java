@@ -81,7 +81,7 @@ public class Events implements Listener {
                     Sheep sheep = (Sheep) e.getEntity();
                     Location sheeploc = sheep.getLocation();
                     sheep.setColor(DyeColor.values()[(new Random()).nextInt(DyeColor.values().length)]);
-                    sheep.getWorld().playEffect(sheeploc.add(0, 0, 0), Effect.SMOKE, 1);
+                    sheep.getWorld().playEffect(sheeploc.add(0, 0, 0), Effect.EXPLOSION_LARGE, 1);
                     sheep.setVelocity(new Vector(0, 2.2, 0));
                     damager.getWorld().playSound(damager.getLocation(), Sound.ITEM_PICKUP, 10, 1);
                 } else if (e.getEntity() instanceof Creeper) {

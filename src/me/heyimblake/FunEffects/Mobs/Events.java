@@ -8,6 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
+import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
@@ -71,6 +72,28 @@ public class Events implements Listener {
         }.runTaskLater(Main.getPlugin(), 2L);
     }
 
+    private void creeperEffects(final Creeper creeper){
+        creeper.setVelocity(new Vector(0, 1.7, 0));
+        creeper.setPowered(true);
+        creeper.getWorld().playSound(creeper.getLocation(), Sound.CREEPER_HISS, 10, 1);
+        creeper.getWorld().playSound(creeper.getLocation(), Sound.EXPLODE, 10, 1);
+        creeper.getWorld().playEffect(creeper.getLocation(), Effect.EXPLOSION_HUGE, 1);
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                creeper.getWorld().playSound(creeper.getLocation(), Sound.EXPLODE, 10, 1);
+                creeper.getWorld().playEffect(creeper.getLocation(), Effect.EXPLOSION_LARGE, 1);
+                spawnRandomFirework(creeper.getLocation());
+            }
+        }.runTaskLater(Main.getPlugin(), 10L);
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                creeper.setPowered(false);
+            }
+        }.runTaskLater(Main.getPlugin(), 40L);
+    }
+
     @EventHandler
     public void onPunch(EntityDamageByEntityEvent e) {
         if (e.getDamager() instanceof Player) {
@@ -82,31 +105,12 @@ public class Events implements Listener {
                     Location sheeploc = sheep.getLocation();
                     sheep.setColor(DyeColor.values()[(new Random()).nextInt(DyeColor.values().length)]);
                     sheep.getWorld().playEffect(sheeploc.add(0, 0, 0), Effect.EXPLOSION_LARGE, 1);
-                    sheep.setVelocity(new Vector(0, 2.2, 0));
+                    sheep.setVelocity(new Vector(0, 1.7, 0));
                     damager.getWorld().playSound(damager.getLocation(), Sound.ITEM_PICKUP, 10, 1);
                 } else if (e.getEntity() instanceof Creeper) {
                     e.setCancelled(true);
-                    final Creeper creeper = ((Creeper) e.getEntity());
-                    creeper.setVelocity(new Vector(0, 2.2, 0));
-                    creeper.setPowered(true);
-                    creeper.getWorld().playSound(creeper.getLocation(), Sound.CREEPER_HISS, 10, 1);
-                    creeper.getWorld().playSound(creeper.getLocation(), Sound.EXPLODE, 10, 1);
-                    creeper.getWorld().playEffect(creeper.getLocation(), Effect.EXPLOSION_HUGE, 1);
-                    new BukkitRunnable() {
-                        @Override
-                        public void run() {
-                            creeper.getWorld().playSound(creeper.getLocation(), Sound.EXPLODE, 10, 1);
-                            creeper.getWorld().playEffect(creeper.getLocation(), Effect.EXPLOSION_LARGE, 1);
-                            spawnRandomFirework(creeper.getLocation());
-                        }
-                    }.runTaskLater(Main.getPlugin(), 10L);
-                    new BukkitRunnable() {
-                        @Override
-                        public void run() {
-                            creeper.setPowered(false);
-                        }
-                    }.runTaskLater(Main.getPlugin(), 40L);
-
+                    Creeper creeper = ((Creeper) e.getEntity());
+                    creeperEffects(creeper);
                 }
             }
         }
@@ -120,11 +124,18 @@ public class Events implements Listener {
             } else if (e.getEntity() instanceof Creeper) {
                 e.setCancelled(true);
             }
+        } else if (e.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_EXPLOSION)){
+            e.setCancelled(true);
         }
     }
-
     @EventHandler
     public void onExplode(EntityExplodeEvent e){
+        if (e.getEntity() instanceof Creeper){
+            e.setCancelled(true);
+        }
+    }
+    @EventHandler
+    public void mobTracking(EntityTargetLivingEntityEvent e){
         if (e.getEntity() instanceof Creeper){
             e.setCancelled(true);
         }

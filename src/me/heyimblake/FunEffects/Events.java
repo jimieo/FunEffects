@@ -19,7 +19,6 @@ import static me.heyimblake.FunEffects.Utils.Booleans.*;
  * Created by heyimblake on 8/23/2015.
  */
 public class Events implements Listener {
-
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
@@ -37,31 +36,6 @@ public class Events implements Listener {
                 p.getInventory().remove(Material.EGG);
                 p.getInventory().addItem(Gadgets.createEggsplosion(16));
             }
-        }
-    }
-
-    @EventHandler
-    public void onSheepPunch(EntityDamageByEntityEvent e) {
-        if (e.getDamager() instanceof Player) {
-            Player damager = (Player) e.getDamager();
-            if (e.getEntity() instanceof Sheep) {
-                if (e.getCause() == EntityDamageEvent.DamageCause.ENTITY_ATTACK) {
-                    final Sheep sheep = (Sheep) e.getEntity();
-                    Location sheeploc = sheep.getLocation();
-                    e.setCancelled(true);
-                    sheep.setColor(DyeColor.values()[(new Random()).nextInt(DyeColor.values().length)]);
-                    sheep.getWorld().playEffect(sheeploc.add(0, 0, 0), Effect.SMOKE, 3);
-                    sheep.setVelocity(new Vector(0, 2.2, 0));
-                    damager.getWorld().playSound(damager.getLocation(), Sound.ITEM_PICKUP, 10, 1);
-                }
-            }
-        }
-    }
-
-    @EventHandler
-    public void sheepFallDmg(EntityDamageEvent e) {
-        if (e.getEntity() instanceof Sheep && e.getCause() == EntityDamageEvent.DamageCause.FALL) {
-            e.setCancelled(true);
         }
     }
 }

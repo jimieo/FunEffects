@@ -28,6 +28,7 @@ public class Main extends JavaPlugin {
         pm.registerEvents(new sendToWho(), this);
         pm.registerEvents(new choosePlayer(), this);
         pm.registerEvents(new togglesMenu(), this);
+        pm.registerEvents( new me.heyimblake.FunEffects.Mobs.Events(), this);
         pm.registerEvents(new me.heyimblake.FunEffects.Eggsplosion.Events(), this);
         getCommand("giveenderpurr").setExecutor(new giveEnderPurrCMD());
         getCommand("givefireball").setExecutor(new giveFireBallCMD());

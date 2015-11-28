@@ -1,6 +1,6 @@
 package me.heyimblake.FunEffects.Commands;
 
-import me.heyimblake.FunEffects.ItemStacks.FireBall;
+import me.heyimblake.FunEffects.ItemStacks.Gadgets;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -17,7 +17,7 @@ import static me.heyimblake.FunEffects.Utils.Strings.*;
 public class giveFireBallCMD implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
         if (cmd.getName().equalsIgnoreCase("givefireball")) {
-            ItemStack sb = FireBall.createFireball(16);
+            ItemStack sb = Gadgets.createFireball(16);
             if (!(sender instanceof Player)) {
                 sender.sendMessage(NONPLAYERERR);
                 return true;

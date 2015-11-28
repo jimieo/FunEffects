@@ -1,7 +1,6 @@
 package me.heyimblake.FunEffects.FireBall;
 
-import me.heyimblake.FunEffects.ItemStacks.EnderPurr;
-import me.heyimblake.FunEffects.ItemStacks.FireBall;
+import me.heyimblake.FunEffects.ItemStacks.Gadgets;
 import me.heyimblake.FunEffects.Main;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
@@ -85,7 +84,7 @@ public class Events implements Listener {
     }
 
     private HashMap<UUID, Long> cooldowns = new HashMap<>();
-    final int seconds = 1;
+    final int seconds = 2;
 
     private boolean hasCooldown(Player player) {
         if (cooldowns.get(player.getUniqueId()) < (System.currentTimeMillis() - seconds * 1000)) {
@@ -106,16 +105,18 @@ public class Events implements Listener {
         if (e.getEntity() instanceof Snowball) {
             if (e.getEntityType() == EntityType.SNOWBALL) {
                 if (fireballon) {
-                    Location loc = e.getEntity().getLocation();
-                    if (p.getGameMode().equals(GameMode.CREATIVE) || p.isOp() || p.hasPermission("funeffects.bypasscooldown")){
-                        doFirework(loc);
-                        return;
-                    } else if ((cooldowns.get(p.getUniqueId()) == null) || !hasCooldown(p)) {
-                        activateCooldown(p);
-                        doFirework(loc);
-                    } else if (hasCooldown(p)){
-                        ItemStack fireball = FireBall.createFireball(1);
-                        p.getInventory().addItem(fireball);
+                    if (p.hasPermission("funeffects.useFireBall") || p.isOp()) {
+                        Location loc = e.getEntity().getLocation();
+                        if (p.getGameMode().equals(GameMode.CREATIVE) || p.isOp() || p.hasPermission("funeffects.bypasscooldown")) {
+                            doFirework(loc);
+                            return;
+                        } else if ((cooldowns.get(p.getUniqueId()) == null) || !hasCooldown(p)) {
+                            activateCooldown(p);
+                            doFirework(loc);
+                        } else if (hasCooldown(p)) {
+                            ItemStack fireball = Gadgets.createFireball(1);
+                            p.getInventory().addItem(fireball);
+                        }
                     }
                 }
             }

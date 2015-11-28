@@ -28,6 +28,8 @@ public class Main extends JavaPlugin {
         pm.registerEvents(new sendToWho(), this);
         pm.registerEvents(new choosePlayer(), this);
         pm.registerEvents(new togglesMenu(), this);
+        pm.registerEvents( new me.heyimblake.FunEffects.Mobs.Events(), this);
+        pm.registerEvents(new me.heyimblake.FunEffects.Eggsplosion.Events(), this);
         getCommand("giveenderpurr").setExecutor(new giveEnderPurrCMD());
         getCommand("givefireball").setExecutor(new giveFireBallCMD());
         getCommand("toggleautoinv").setExecutor(new toggleAutoInvCMD());
@@ -35,6 +37,7 @@ public class Main extends JavaPlugin {
         getCommand("togglefireball").setExecutor(new toggleFireBallCMD());
         getCommand("togglechairs").setExecutor(new toggleChairsCMD());
         getCommand("funeffectsadmin").setExecutor(new funEffectsAdminCMD());
+        getCommand("toggleeggsplosions").setExecutor(new toggleEggsplosionsCMD());
     }
     @Override
     public void onDisable(){

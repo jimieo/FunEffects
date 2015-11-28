@@ -1,5 +1,5 @@
 name: FunEffects
-version: 1.1.9
+version: 1.2.0
 author: heyimblake
 main: me.heyimblake.FunEffects.Main
 website: http://funeffects.heyimblake.me
@@ -10,43 +10,49 @@ commands:
     usage: /<command> (player)
     aliases: gep
     permission: funeffects.giveender
-    permission-message: §4Insufficient Permissions.
+    permission-message: §4Much Command. Such Permissions. Many Denied. Wow.
   givefireball:
     description: Gives 16 FireBalls.
     usage: /<command> (player)
     aliases: gfb
     permission: funeffects.givefireball
-    permission-message: §4Insufficient Permissions.
+    permission-message: §4Much Command. Such Permissions. Many Denied. Wow.
   toggleautoinv:
     description: Toggles automatic inventory handling upon login.
     usage: /<command>
     aliases: tai
     permission: funeffects.toggleautoinv
-    permission-message: §4Insufficient Permissions.
+    permission-message: §4Much Command. Such Permissions. Many Denied. Wow.
   togglefireball:
     description: Toggles FireBall effects.
     usage: /<command>
     aliases: tfb
     permission: funeffects.togglefireball
-    permission-message: §4Insufficient Permissions.
+    permission-message: §4Much Command. Such Permissions. Many Denied. Wow.
   toggleenderpurr:
     description: Toggles EnderPurr effects.
     usage: /<command>
     aliases: tep
     permission: funeffects.toggleenderpurr
-    permission-message: §4Insufficient Permissions.
+    permission-message: §4Much Command. Such Permissions. Many Denied. Wow.
   togglechairs:
     description: Toggles chairs.
     usage: /<command>
     aliases: tch
     permission: funeffects.togglechairs
-    permission-message: §4Insufficient Permissions.
+    permission-message: §4Much Command. Such Permissions. Many Denied. Wow.
   funeffectsadmin:
     description: Shows Admin GUI.
     usage: /<command>
     aliases: fea
     permission: funeffects.admincmd
-    permission-message: §4Insufficient Permissions.
+    permission-message: §4Much Command. Such Permissions. Many Denied. Wow.
+  toggleeggsplosions:
+    description: Toggles Eggsplosions usability.
+    usage: /<command>
+    aliases: te
+    permission: funeffects.toggleeggs
+    permission-message: §4Much Command. Such Permissions. Many Denied. Wow.
 permissions:
    funeffects.*:
      description: Gives access to all FunEffects commands!
@@ -60,4 +66,16 @@ permissions:
        funeffects.togglechairs: true
        funeffects.admincmd: true
        funeffects.bypasscooldown: true
+       funeffects.toggleeggs: true
+       funeffects.useEggsplosions: true
+       funeffects.useEnderPurr: true
+       funeffects.useFireBall: true
      default: op
+   funeffects.player:
+     description: Gives access to common player features.
+     children:
+       funeffects.usechair: true
+       funeffects.useEggsplosions: true
+       funeffects.useEnderPurr: true
+       funeffects.useFireBall: true
+     default: true

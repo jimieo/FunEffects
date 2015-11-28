@@ -1,13 +1,11 @@
 package me.heyimblake.FunEffects.ItemStacks;
 
 import org.bukkit.ChatColor;
-import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
-import org.bukkit.material.Dye;
 
 import java.util.Arrays;
 
@@ -17,6 +15,14 @@ import static me.heyimblake.FunEffects.Utils.Strings.*;
  * Created by heyimblake on 10/31/2015.
  */
 public class InventoryItems {
+    public static ItemStack eggsplosionMainMenu(){
+        ItemStack egg = new ItemStack(Material.EGG, 1);
+        ItemMeta eggMeta = egg.getItemMeta();
+        eggMeta.setDisplayName("Give "+EggsplosionName);
+        eggMeta.setLore(Arrays.asList(ChatColor.GRAY+"Give somebody some Eggsplosions!","",ChatColor.DARK_GRAY+""+heavyarrow+ChatColor.GOLD+" Click to Select"));
+        egg.setItemMeta(eggMeta);
+        return egg;
+    }
     public static ItemStack enderPurrMainMenu(){
         ItemStack ep = new ItemStack(Material.ENDER_PEARL, 1);
         ItemMeta epMeta = ep.getItemMeta();
@@ -100,7 +106,7 @@ public class InventoryItems {
     public static ItemStack toggleEnderPurr(){
         ItemStack ep = new ItemStack(Material.ENDER_PEARL, 1);
         ItemMeta epMeta = ep.getItemMeta();
-        epMeta.setDisplayName("Toggle "+EnderPurrName);
+        epMeta.setDisplayName(ChatColor.GRAY+"Toggle "+EnderPurrName);
         epMeta.setLore(Arrays.asList(ChatColor.GRAY+"Toggles EnderPurrs usability.","",ChatColor.DARK_GRAY+""+heavyarrow+ChatColor.GOLD+" Click to Toggle"));
         ep.setItemMeta(epMeta);
         return ep;
@@ -108,7 +114,7 @@ public class InventoryItems {
     public static ItemStack toggleFireBall(){
         ItemStack fb = new ItemStack(Material.SNOW_BALL, 1);
         ItemMeta fbMeta = fb.getItemMeta();
-        fbMeta.setDisplayName("Toggle "+FireBallName);
+        fbMeta.setDisplayName(ChatColor.GRAY+"Toggle "+FireBallName);
         fbMeta.setLore(Arrays.asList(ChatColor.GRAY+"Toggles FireBalls usability.","",ChatColor.DARK_GRAY+""+heavyarrow+ChatColor.GOLD+" Click to Toggle"));
         fb.setItemMeta(fbMeta);
         return fb;
@@ -121,5 +127,37 @@ public class InventoryItems {
         skullMeta.setOwner(p.getName());
         skull.setItemMeta(skullMeta);
         return skull;
+    }
+    public static ItemStack toggleEggsplosion(){
+        ItemStack egg = new ItemStack(Material.EGG, 1);
+        ItemMeta eggMeta = egg.getItemMeta();
+        eggMeta.setDisplayName(ChatColor.GRAY+"Toggle "+EggsplosionName);
+        eggMeta.setLore(Arrays.asList(ChatColor.GRAY+"Toggles Eggsplosions usability.","",ChatColor.DARK_GRAY+""+heavyarrow+ChatColor.GOLD+" Click to Toggle"));
+        egg.setItemMeta(eggMeta);
+        return egg;
+    }
+    public static ItemStack toggleCreeper(){
+        ItemStack item = new ItemStack(Material.MONSTER_EGG, 1, (short) 50);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.AQUA+"Toggle Creeper Effects");
+        meta.setLore(Arrays.asList(ChatColor.GRAY+"Toggles punch effects for this mob.","",ChatColor.DARK_GRAY+""+heavyarrow+ChatColor.GOLD+" Click to Toggle"));
+        item.setItemMeta(meta);
+        return item;
+    }
+    public static ItemStack toggleSpiders(){
+        ItemStack item = new ItemStack(Material.MONSTER_EGG, 1, (short) 59);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.AQUA+"Toggle Spiders Effects");
+        meta.setLore(Arrays.asList(ChatColor.GRAY+"Toggles punch effects for this mob.","",ChatColor.DARK_GRAY+""+heavyarrow+ChatColor.GOLD+" Click to Toggle"));
+        item.setItemMeta(meta);
+        return item;
+    }
+    public static ItemStack toggleSheep(){
+        ItemStack item = new ItemStack(Material.MONSTER_EGG, 1, (short) 91);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.AQUA+"Toggle Sheep Effects");
+        meta.setLore(Arrays.asList(ChatColor.GRAY+"Toggles punch effects for this mob.","",ChatColor.DARK_GRAY+""+heavyarrow+ChatColor.GOLD+" Click to Toggle"));
+        item.setItemMeta(meta);
+        return item;
     }
 }

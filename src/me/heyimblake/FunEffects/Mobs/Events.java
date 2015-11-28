@@ -46,11 +46,10 @@ public class Events implements Listener {
 
         //Random Shape
         FireworkEffect.Type shape = null;
-        int rs = r.nextInt(4);
+        int rs = r.nextInt(3);
         if (rs == 0) shape = FireworkEffect.Type.BALL;
         if (rs == 1) shape = FireworkEffect.Type.BURST;
         if (rs == 2) shape = FireworkEffect.Type.STAR;
-        if (rs == 3) shape = FireworkEffect.Type.CREEPER;
 
         //Randomly decide if a flicker will be added
         Boolean flicker = null;
@@ -73,7 +72,7 @@ public class Events implements Listener {
     }
 
     private void creeperEffects(final Creeper creeper){
-        creeper.setVelocity(new Vector(0, 1.7, 0));
+        creeper.setVelocity(new Vector(0, 1.5, 0));
         creeper.setPowered(true);
         creeper.getWorld().playSound(creeper.getLocation(), Sound.CREEPER_HISS, 10, 1);
         creeper.getWorld().playSound(creeper.getLocation(), Sound.EXPLODE, 10, 1);
@@ -97,7 +96,7 @@ public class Events implements Listener {
     @EventHandler
     public void onPunch(EntityDamageByEntityEvent e) {
         if (e.getDamager() instanceof Player) {
-            Player damager = (Player) e.getDamager();
+            final Player damager = (Player) e.getDamager();
             if (e.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_ATTACK)) {
                 if (e.getEntity() instanceof Sheep) {
                     e.setCancelled(true);
@@ -105,12 +104,33 @@ public class Events implements Listener {
                     Location sheeploc = sheep.getLocation();
                     sheep.setColor(DyeColor.values()[(new Random()).nextInt(DyeColor.values().length)]);
                     sheep.getWorld().playEffect(sheeploc.add(0, 0, 0), Effect.EXPLOSION_LARGE, 1);
-                    sheep.setVelocity(new Vector(0, 1.7, 0));
+                    sheep.setVelocity(new Vector(0, 1.5, 0));
                     damager.getWorld().playSound(damager.getLocation(), Sound.ITEM_PICKUP, 10, 1);
                 } else if (e.getEntity() instanceof Creeper) {
                     e.setCancelled(true);
                     Creeper creeper = ((Creeper) e.getEntity());
                     creeperEffects(creeper);
+                } else if (e.getEntity() instanceof Spider || e.getEntity() instanceof CaveSpider) {
+                    e.setCancelled(true);
+                    final Entity entity = e.getEntity();
+                    entity.setVelocity(new Vector(0, 1.7, 0));
+                    entity.setPassenger(damager);
+                    entity.getWorld().playEffect(entity.getLocation(), Effect.MOBSPAWNER_FLAMES, 1);
+                    entity.getWorld().playEffect(entity.getLocation(), Effect.EXPLOSION_LARGE, 1);
+                    damager.playSound(damager.getLocation(), Sound.SPIDER_IDLE, 10, 1);
+                    new BukkitRunnable() {
+                        @Override
+                        public void run() {
+                            spawnRandomFirework(entity.getLocation());
+                            entity.getWorld().playEffect(entity.getLocation(), Effect.MAGIC_CRIT, 1);
+                        }
+                    }.runTaskLater(Main.getPlugin(), 20L);
+                    new BukkitRunnable() {
+                        @Override
+                        public void run() {
+                            entity.eject();
+                        }
+                    }.runTaskLater(Main.getPlugin(), 45L);
                 }
             }
         }
@@ -122,6 +142,12 @@ public class Events implements Listener {
             if (e.getEntity() instanceof Sheep) {
                 e.setCancelled(true);
             } else if (e.getEntity() instanceof Creeper) {
+                e.setCancelled(true);
+            } else if (e.getEntity() instanceof Spider) {
+                e.setCancelled(true);
+            } else if (e.getEntity() instanceof CaveSpider) {
+                e.setCancelled(true);
+            } else if (e.getEntity() instanceof Player) {
                 e.setCancelled(true);
             }
         } else if (e.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_EXPLOSION)){
@@ -137,6 +163,10 @@ public class Events implements Listener {
     @EventHandler
     public void mobTracking(EntityTargetLivingEntityEvent e){
         if (e.getEntity() instanceof Creeper){
+            e.setCancelled(true);
+        } else if (e.getEntity() instanceof Spider){
+            e.setCancelled(true);
+        } else if (e.getEntity() instanceof CaveSpider){
             e.setCancelled(true);
         }
     }

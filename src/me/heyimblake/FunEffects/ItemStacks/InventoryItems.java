@@ -132,8 +132,32 @@ public class InventoryItems {
         ItemStack egg = new ItemStack(Material.EGG, 1);
         ItemMeta eggMeta = egg.getItemMeta();
         eggMeta.setDisplayName(ChatColor.GRAY+"Toggle "+EggsplosionName);
-        eggMeta.setLore(Arrays.asList(ChatColor.GRAY+"Toggles Eggsplosions usability.","",ChatColor.DARK_GRAY+""+heavyarrow+ChatColor.GOLD+" Click to Togle"));
+        eggMeta.setLore(Arrays.asList(ChatColor.GRAY+"Toggles Eggsplosions usability.","",ChatColor.DARK_GRAY+""+heavyarrow+ChatColor.GOLD+" Click to Toggle"));
         egg.setItemMeta(eggMeta);
         return egg;
+    }
+    public static ItemStack toggleCreeper(){
+        ItemStack item = new ItemStack(Material.MONSTER_EGG, 1, (short) 50);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.AQUA+"Toggle Creeper Effects");
+        meta.setLore(Arrays.asList(ChatColor.GRAY+"Toggles punch effects for this mob.","",ChatColor.DARK_GRAY+""+heavyarrow+ChatColor.GOLD+" Click to Toggle"));
+        item.setItemMeta(meta);
+        return item;
+    }
+    public static ItemStack toggleSpiders(){
+        ItemStack item = new ItemStack(Material.MONSTER_EGG, 1, (short) 59);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.AQUA+"Toggle Spiders Effects");
+        meta.setLore(Arrays.asList(ChatColor.GRAY+"Toggles punch effects for this mob.","",ChatColor.DARK_GRAY+""+heavyarrow+ChatColor.GOLD+" Click to Toggle"));
+        item.setItemMeta(meta);
+        return item;
+    }
+    public static ItemStack toggleSheep(){
+        ItemStack item = new ItemStack(Material.MONSTER_EGG, 1, (short) 91);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(ChatColor.AQUA+"Toggle Sheep Effects");
+        meta.setLore(Arrays.asList(ChatColor.GRAY+"Toggles punch effects for this mob.","",ChatColor.DARK_GRAY+""+heavyarrow+ChatColor.GOLD+" Click to Toggle"));
+        item.setItemMeta(meta);
+        return item;
     }
 }

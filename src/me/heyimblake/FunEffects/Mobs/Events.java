@@ -97,9 +97,9 @@ public class Events implements Listener {
 
     @EventHandler
     public void onPunch(EntityDamageByEntityEvent e) {
-        if (e.getDamager() instanceof Player) {
-            final Player damager = (Player) e.getDamager();
-            if (e.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_ATTACK)) {
+        if (e.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_ATTACK)) {
+            if (e.getDamager() instanceof Player) {
+                final Player damager = (Player) e.getDamager();
                 if (e.getEntity() instanceof Sheep && sheepon) {
                     e.setCancelled(true);
                     Sheep sheep = (Sheep) e.getEntity();
@@ -139,7 +139,7 @@ public class Events implements Listener {
     }
 
     @EventHandler
-    public void fallDmg(EntityDamageEvent e) {
+    public void noDmg(EntityDamageEvent e) {
         if (e.getCause().equals(EntityDamageEvent.DamageCause.FALL)) {
             if (e.getEntity() instanceof Sheep && sheepon) {
                 e.setCancelled(true);
@@ -152,10 +152,11 @@ public class Events implements Listener {
             } else if (e.getEntity() instanceof Player) {
                 e.setCancelled(true);
             }
-        } else if (e.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_EXPLOSION)){
+        } else if (e.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_EXPLOSION)) {
             e.setCancelled(true);
         }
     }
+
     @EventHandler
     public void onExplode(EntityExplodeEvent e){
         if (e.getEntity() instanceof Creeper && creeperon){

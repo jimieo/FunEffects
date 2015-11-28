@@ -13,6 +13,8 @@ import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
+import static me.heyimblake.FunEffects.Utils.Booleans.*;
+
 import java.util.Random;
 
 /**
@@ -98,7 +100,7 @@ public class Events implements Listener {
         if (e.getDamager() instanceof Player) {
             final Player damager = (Player) e.getDamager();
             if (e.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_ATTACK)) {
-                if (e.getEntity() instanceof Sheep) {
+                if (e.getEntity() instanceof Sheep && sheepon) {
                     e.setCancelled(true);
                     Sheep sheep = (Sheep) e.getEntity();
                     Location sheeploc = sheep.getLocation();
@@ -106,11 +108,11 @@ public class Events implements Listener {
                     sheep.getWorld().playEffect(sheeploc.add(0, 0, 0), Effect.EXPLOSION_LARGE, 1);
                     sheep.setVelocity(new Vector(0, 1.5, 0));
                     damager.getWorld().playSound(damager.getLocation(), Sound.ITEM_PICKUP, 10, 1);
-                } else if (e.getEntity() instanceof Creeper) {
+                } else if (e.getEntity() instanceof Creeper && creeperon) {
                     e.setCancelled(true);
                     Creeper creeper = ((Creeper) e.getEntity());
                     creeperEffects(creeper);
-                } else if (e.getEntity() instanceof Spider || e.getEntity() instanceof CaveSpider) {
+                } else if ((e.getEntity() instanceof Spider || e.getEntity() instanceof CaveSpider) && spiderson) {
                     e.setCancelled(true);
                     final Entity entity = e.getEntity();
                     entity.setVelocity(new Vector(0, 1.7, 0));
@@ -139,13 +141,13 @@ public class Events implements Listener {
     @EventHandler
     public void fallDmg(EntityDamageEvent e) {
         if (e.getCause().equals(EntityDamageEvent.DamageCause.FALL)) {
-            if (e.getEntity() instanceof Sheep) {
+            if (e.getEntity() instanceof Sheep && sheepon) {
                 e.setCancelled(true);
-            } else if (e.getEntity() instanceof Creeper) {
+            } else if (e.getEntity() instanceof Creeper && creeperon) {
                 e.setCancelled(true);
-            } else if (e.getEntity() instanceof Spider) {
+            } else if (e.getEntity() instanceof Spider && spiderson) {
                 e.setCancelled(true);
-            } else if (e.getEntity() instanceof CaveSpider) {
+            } else if (e.getEntity() instanceof CaveSpider && spiderson) {
                 e.setCancelled(true);
             } else if (e.getEntity() instanceof Player) {
                 e.setCancelled(true);
@@ -156,17 +158,17 @@ public class Events implements Listener {
     }
     @EventHandler
     public void onExplode(EntityExplodeEvent e){
-        if (e.getEntity() instanceof Creeper){
+        if (e.getEntity() instanceof Creeper && creeperon){
             e.setCancelled(true);
         }
     }
     @EventHandler
     public void mobTracking(EntityTargetLivingEntityEvent e){
-        if (e.getEntity() instanceof Creeper){
+        if (e.getEntity() instanceof Creeper && creeperon){
             e.setCancelled(true);
-        } else if (e.getEntity() instanceof Spider){
+        } else if (e.getEntity() instanceof Spider && spiderson){
             e.setCancelled(true);
-        } else if (e.getEntity() instanceof CaveSpider){
+        } else if (e.getEntity() instanceof CaveSpider && spiderson){
             e.setCancelled(true);
         }
     }

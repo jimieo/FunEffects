@@ -10,5 +10,7 @@ public class Booleans {
     public static boolean fireballon = true;
     public static boolean chairson = true;
     public static boolean eggon = true;
-
+    public static boolean creeperon = true;
+    public static boolean spiderson = true;
+    public static boolean sheepon = true;
 }

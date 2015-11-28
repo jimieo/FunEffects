@@ -21,13 +21,13 @@ import static me.heyimblake.FunEffects.Utils.Booleans.*;
  * Created by heyimblake on 11/16/15.
  */
 public class Events implements Listener {
-    private void doEffects(Location loc, Egg egg){
+    private void doEffects(Player player, Location loc, Egg egg){
         World world = egg.getWorld();
         world.playEffect(loc, Effect.EXPLOSION_HUGE, 1);
         world.playEffect(loc.add(0, .5, 0), Effect.SMOKE, 3);
         world.playEffect(loc, Effect.MOBSPAWNER_FLAMES, 2);
         world.playSound(loc, Sound.CHICKEN_IDLE, 10, 1);
-        world.playSound(loc, Sound.EXPLODE, 10, 1);
+        player.playSound(loc, Sound.EXPLODE, 10, 1);
     }
 
     private HashMap<UUID, Long> cooldowns = new HashMap<>();
@@ -56,10 +56,10 @@ public class Events implements Listener {
                         Location loc = e.getEntity().getLocation();
                         Egg egg = (Egg) e.getEntity();
                         if (p.isOp() || p.hasPermission("funeffects.bypasscooldown") || p.getGameMode().equals(GameMode.CREATIVE)) {
-                            doEffects(loc, egg);
+                            doEffects(p, loc, egg);
                         } else if ((cooldowns.get(p.getUniqueId()) == null) || !hasCooldown(p)) {
                             activateCooldown(p);
-                            doEffects(loc, egg);
+                            doEffects(p, loc, egg);
                         } else if (hasCooldown(p)) {
                             ItemStack eggItem = Gadgets.createEggsplosion(1);
                             p.getInventory().addItem(eggItem);

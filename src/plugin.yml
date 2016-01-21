@@ -1,5 +1,5 @@
-name: FunEffects
-version: 1.2.0
+name: ${project.artifactId}
+version: ${project.version}
 author: heyimblake
 main: me.heyimblake.FunEffects.Main
 website: http://funeffects.heyimblake.me

@@ -1,6 +1,7 @@
 package me.heyimblake.FunEffects.Mobs;
 
 import me.heyimblake.FunEffects.Main;
+import me.heyimblake.FunEffects.Utils.Effects;
 import org.bukkit.*;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -9,7 +10,6 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
-import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
@@ -22,57 +22,6 @@ import java.util.Random;
  */
 public class Events implements Listener {
 
-    private void spawnRandomFirework(Location loc){
-        //First random color
-        Random r = new Random();
-        int rc = r.nextInt(7);
-        Color color = null;
-        if (rc == 0) color = Color.AQUA;
-        if (rc == 1) color = Color.ORANGE;
-        if (rc == 2) color = Color.RED;
-        if (rc == 3) color = Color.FUCHSIA;
-        if (rc == 4) color = Color.GREEN;
-        if (rc == 5) color = Color.LIME;
-        if (rc == 6) color = Color.WHITE;
-
-        //Second random color
-        int rc2 = r.nextInt(7);
-        Color color2 = null;
-        if (rc2 == 0) color2 = Color.TEAL;
-        if (rc2 == 1) color2 = Color.BLUE;
-        if (rc2 == 2) color2 = Color.PURPLE;
-        if (rc2 == 3) color2 = Color.BLACK;
-        if (rc2 == 4) color2 = Color.OLIVE;
-        if (rc2 == 5) color2 = Color.NAVY;
-        if (rc2 == 6) color2 = Color.GRAY;
-
-        //Random Shape
-        FireworkEffect.Type shape = null;
-        int rs = r.nextInt(3);
-        if (rs == 0) shape = FireworkEffect.Type.BALL;
-        if (rs == 1) shape = FireworkEffect.Type.BURST;
-        if (rs == 2) shape = FireworkEffect.Type.STAR;
-
-        //Randomly decide if a flicker will be added
-        Boolean flicker = null;
-        int rf = r.nextInt(2) + 1;
-        if (rf == 1) flicker = true;
-        if (rf == 2) flicker = false;
-
-        FireworkEffect effect = FireworkEffect.builder().trail(false).flicker(flicker).withColor(color).withColor(color2).with(shape).build();
-        final Firework fw = loc.getWorld().spawn(loc.add(0, 1, 0), Firework.class);
-        FireworkMeta meta = fw.getFireworkMeta();
-        meta.addEffect(effect);
-        meta.setPower(0);
-        fw.setFireworkMeta(meta);
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                fw.detonate();
-            }
-        }.runTaskLater(Main.getPlugin(), 2L);
-    }
-
     private void creeperEffects(final Creeper creeper){
         creeper.setVelocity(new Vector(0, 1.5, 0));
         creeper.setPowered(true);
@@ -84,7 +33,7 @@ public class Events implements Listener {
             public void run() {
                 creeper.getWorld().playSound(creeper.getLocation(), Sound.EXPLODE, 10, 1);
                 creeper.getWorld().playEffect(creeper.getLocation(), Effect.EXPLOSION_LARGE, 1);
-                spawnRandomFirework(creeper.getLocation());
+                Effects.doFirework(creeper.getLocation());
             }
         }.runTaskLater(Main.getPlugin(), 10L);
         new BukkitRunnable() {
@@ -123,7 +72,7 @@ public class Events implements Listener {
                     new BukkitRunnable() {
                         @Override
                         public void run() {
-                            spawnRandomFirework(entity.getLocation());
+                            Effects.doFirework(entity.getLocation());
                             entity.getWorld().playEffect(entity.getLocation(), Effect.MAGIC_CRIT, 1);
                         }
                     }.runTaskLater(Main.getPlugin(), 20L);

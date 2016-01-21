@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>me.heyimblake</groupId>
     <artifactId>FunEffects</artifactId>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,6 +20,10 @@
                 <includes>
                     <include>plugin.yml</include>
                 </includes>
+            </resource>
+            <resource>
+                <directory>src</directory>
+                <filtering>true</filtering>
             </resource>
         </resources>
         <plugins>
